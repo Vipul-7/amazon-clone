@@ -1,4 +1,5 @@
 $nav-background-color: #131921;
+$light-text-color: #ccc;
 
 .nav {
   height: 6rem;
@@ -61,7 +62,7 @@ $nav-background-color: #131921;
       p {
         font-size: 1.2rem;
         font-weight: 500;
-        color: #cccc;
+        color: $light-text-color;
       }
 
       h3 {
@@ -90,13 +91,14 @@ $nav-background-color: #131921;
       border-top-left-radius: 0.4rem;
       border-bottom-left-radius: 0.4rem;
       border: none;
-      border-right: 1px solid #ccc;
+      border-right: 1px solid $light-text-color;
       padding: 0.3rem 0.5rem;
 
       background: #e8e7e7;
     }
 
-    select:hover, select:focus {
+    select:hover,
+    select:focus {
       background: #cbcaca;
       outline: 2px solid #cc882e;
     }
@@ -123,7 +125,7 @@ $nav-background-color: #131921;
     & button {
       background-color: #febd69;
       padding: 0.3rem 1.3rem;
-      border-left: 1px solid #ccc;
+      border-left: 1px solid $light-text-color;
 
       outline: 0;
       font-size: 1.4rem;
@@ -173,7 +175,7 @@ $nav-background-color: #131921;
     svg {
       width: 1.8rem;
       margin-bottom: -0.8rem;
-      fill: #ccc;
+      fill: $light-text-color;
     }
   }
 
@@ -184,7 +186,7 @@ $nav-background-color: #131921;
     margin-left: 0.2rem;
 
     svg {
-      fill: #ccc;
+      fill: $light-text-color;
       width: 1.8rem;
       align-self: flex-end;
       margin-bottom: 1rem;
