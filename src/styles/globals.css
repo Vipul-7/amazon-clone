@@ -1,5 +1,8 @@
 :root {
   --nav-belt-background: #131921;
+
+  --border-for-hover : 1.3px solid #fff;
+  --border-radius-for-hover : 2px;
 }
 
 * {
@@ -25,7 +28,8 @@ body {
     font-weight: normal;
     font-style: normal;
   }
-  font-family: Arial, sans-serif ;
+  color: #1b1d1d;
+  font-family: Arial, sans-serif;
   font-weight: 400;
   line-height: 2rem;
 }

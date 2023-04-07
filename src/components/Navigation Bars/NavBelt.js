@@ -1,6 +1,6 @@
 import styles from "./NavBelt.module.scss";
 import Image from "next/image";
-import AmazonLogo from "./AmazonLogo";
+import AmazonLogo from "../Icons/AmazonLogo";
 import LocationIcon from "../Icons/LocationIcon";
 import SearchIcon from "../Icons/SearchIcon";
 import DrowDownIcon from "../Icons/DrowDownIcon";

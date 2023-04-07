@@ -35,12 +35,17 @@ $light-text-color: #ccc;
       font-weight: 400;
       align-self: center;
     }
+
+    &:hover{
+      border: var(--border-for-hover);
+      border-radius: var(--border-radius-for-hover);
+    }
   }
 
   &__location {
     display: flex;
     margin: 0.5rem 0.2rem 0.5rem 0.7rem;
-    padding: 0 0.9rem;
+    padding: 1rem 0.9rem;
 
     & span {
       display: flex;
@@ -70,6 +75,11 @@ $light-text-color: #ccc;
         font-weight: 700;
         color: #fff;
       }
+    }
+
+    &:hover{
+      border: var(--border-for-hover);
+      border-radius: var(--border-radius-for-hover);
     }
   }
 }
@@ -177,6 +187,11 @@ $light-text-color: #ccc;
       margin-bottom: -0.8rem;
       fill: $light-text-color;
     }
+
+    &:hover{
+      border: var(--border-for-hover);
+      border-radius: var(--border-radius-for-hover);
+    }
   }
 
   &__signIn-main {
@@ -190,6 +205,11 @@ $light-text-color: #ccc;
       width: 1.8rem;
       align-self: flex-end;
       margin-bottom: 1rem;
+    }
+
+    &:hover{
+      border: var(--border-for-hover);
+      border-radius: var(--border-radius-for-hover);
     }
   }
 
@@ -231,6 +251,11 @@ $light-text-color: #ccc;
       font-size: 1.4rem;
       font-weight: 700;
       line-height: 1.5rem;
+    }
+
+    &:hover{
+      border: var(--border-for-hover);
+      border-radius: var(--border-radius-for-hover);
     }
   }
 
@@ -276,6 +301,11 @@ $light-text-color: #ccc;
 
     & svg {
       fill: #fff;
+    }
+
+    &:hover{
+      border: var(--border-for-hover);
+      border-radius: var(--border-radius-for-hover);
     }
   }
 }
