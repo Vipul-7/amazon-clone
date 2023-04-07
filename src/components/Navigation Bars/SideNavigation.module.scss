@@ -1,3 +1,87 @@
+$top-div-background-color: #232f3e;
+
+.main {
+  position: relative;
+
+  &-close {
+    position: absolute;
+    top: 2rem;
+    left: 26.40%;
+    z-index: 30;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    svg {
+      width: 2.7rem;
+      height: 2.4rem;
+      fill: #fff;
+    }
+  }
+}
+
 .top {
   height: 5rem;
+  background-color: $top-div-background-color;
+
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: #fff;
+
+    margin-left: 3.7rem;
+    margin-right: 1.3rem;
+  }
+
+  span {
+    color: #fff;
+    font-size: 1.9rem;
+    font-weight: 700;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  overflow: scroll;
+
+  h4 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-left: 3.6rem;
+
+    padding: 2rem 2rem 1rem 0;
+
+    &:first-child {
+      margin-top: 0.5rem;
+    }
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+
+    font-size: 1.4rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    padding-left: 3.6rem;
+
+    &:hover {
+      background-color: #e7e7e7;
+    }
+  }
+
+  section {
+    margin-bottom: 0.5rem;
+  }
+
+  section:not(:first-child) {
+    border-top: 1px solid #ccc;
+  }
 }
