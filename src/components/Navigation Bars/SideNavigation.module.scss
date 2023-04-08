@@ -6,7 +6,7 @@ $top-div-background-color: #232f3e;
   &-close {
     position: absolute;
     top: 2rem;
-    left: 26.40%;
+    left: 26.4%;
     z-index: 30;
 
     background-color: transparent;
@@ -74,6 +74,7 @@ $top-div-background-color: #232f3e;
 
     &:hover {
       background-color: #e7e7e7;
+      cursor: pointer;
     }
   }
 
