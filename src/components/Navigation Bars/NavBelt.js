@@ -66,7 +66,7 @@ const NavBelt = () => {
         </section>
 
         <section className={styles["nav-right__orders"]}>
-          <span className={styles["nav-right__returns"]}>Returns</span>
+          <span className={styles["nav-right__orders-returns"]}>Returns</span>
           <span className={styles["nav-right__orders-child"]}>& Orders</span>
         </section>
 

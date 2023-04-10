@@ -49,7 +49,7 @@ const ImageSliders = () => {
         </div>
         <div>
           <img
-            src="https://m.media-amazon.com/images/I/71fPNxKK-SL._SX3000_.jpg"
+            src="https://m.media-amazon.com/images/I/61+Om+g+8SL._SX3000_.jpg"
             alt="image"
           />
         </div>

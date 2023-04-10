@@ -1,0 +1,28 @@
+.main {
+  display: block;
+  position: relative;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  height: 35%;
+  padding: 2.5rem 2rem;
+
+  button {
+    color: #0f1111;
+    border: none;
+    background-color: #f5b534;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 1rem;
+  }
+}
+
+.ad-item {
+  padding: 2rem;
+  height: 100%;
+}

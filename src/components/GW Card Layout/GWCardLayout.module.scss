@@ -1,0 +1,30 @@
+.main {
+  padding: 2rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 2rem;
+  position: relative;
+
+  position: absolute;
+  top: 41%;
+
+  h2 {
+    font-size: 2.1rem;
+    margin-bottom: 1rem;
+  }
+
+  div {
+    display: block;
+    position: relative;
+    background-color: #ffffff;
+    height: 42rem;
+
+    padding: 2rem;
+  }
+
+  h5 {
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: #007185;
+  }
+}

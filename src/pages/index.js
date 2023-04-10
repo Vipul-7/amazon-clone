@@ -3,6 +3,7 @@ import Head from "next/head";
 import NavBarMain from "@/components/Navigation Bars/NavBarMain";
 import SideNavigation from "@/components/Navigation Bars/SideNavigation";
 import ImageSliders from "@/components/Navigation Bars/ImageSliders";
+import GWCardLayout from "@/components/GW Card Layout/GWCardLayout";
 
 export default function Home() {
   return (
@@ -14,8 +15,8 @@ export default function Home() {
       <SideNavigation />
       <NavBelt />
       <NavBarMain />
-      <ImageSliders/>
+      <ImageSliders />
+      <GWCardLayout />
     </>
   );
 }
-
