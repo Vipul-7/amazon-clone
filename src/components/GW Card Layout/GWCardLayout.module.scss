@@ -3,10 +3,9 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-gap: 2rem;
-  position: relative;
 
-  position: absolute;
-  top: 41%;
+  // position: absolute;
+  // top: 41%;
 
   h2 {
     font-size: 2.1rem;

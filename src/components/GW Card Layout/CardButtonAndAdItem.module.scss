@@ -15,10 +15,11 @@
   button {
     color: #0f1111;
     border: none;
-    background-color: #f5b534;
+    background-color: var(--button-backgrond-yellow-orange-color);
     padding: 1rem;
     width: 100%;
     border-radius: 1rem;
+    cursor: pointer;
   }
 }
 

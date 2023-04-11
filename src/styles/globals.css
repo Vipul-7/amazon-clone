@@ -1,8 +1,12 @@
 :root {
   --nav-belt-background: #131921;
+  --text-color: #0f1111;
+  --link-color: #007185;
 
-  --border-for-hover : 1.3px solid #fff;
-  --border-radius-for-hover : 2px;
+  --border-for-hover: 1.3px solid #fff;
+  --border-radius-for-hover: 2px;
+
+  --button-backgrond-yellow-orange-color: rgb(255, 213, 0);
 }
 
 * {
