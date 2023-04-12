@@ -1,37 +1,16 @@
 import React from "react";
-import styles from "./ProductsSlider.module.scss";
+import styles from "./TodaysDeals.module.scss";
 
-import Carousel from "react-multi-carousel";
 import SliderCard from "./SliderCard";
+import Header from "../Header";
+import CarouselBlock from "../CarouselBlock";
 
-const ProductsSlider = () => {
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
+const TodaysDeals = () => {
   return (
     <div className={styles.main}>
-      <section className={styles["box-detail"]}>
-        <h2>Today&apos;s Deals</h2>
-        <p>See all deals</p>
-      </section>
+      <Header title="Today's deal" linkText="See all deals" />
       <section className={styles["slider-box"]}>
-        <Carousel responsive={responsive}>
+        <CarouselBlock>
           <SliderCard
             image="https://m.media-amazon.com/images/I/51lM-Aap4CL._AC_SY400_.jpg"
             offerNum="41"
@@ -62,10 +41,10 @@ const ProductsSlider = () => {
             offerText="11"
             descriptionText="Grab or Gone: Apple iPads on Limited..."
           />
-        </Carousel>
+        </CarouselBlock>
       </section>
     </div>
   );
 };
 
-export default ProductsSlider;
+export default TodaysDeals;
