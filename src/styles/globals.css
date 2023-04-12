@@ -27,6 +27,7 @@ html {
 }
 
 body {
+  position: relative;
   @font-face {
     font-family: "Amazon";
     src: url("/fonts/AmazonEmber-Regular.woff2") format("woff2");
