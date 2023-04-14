@@ -11,7 +11,7 @@ const ProductsSlider = () => {
       <TodaysDeals />
       <RelatedToViewed />
       <UpTo50Off />
-      {/* <GWcards/> */}
+      <GWcards/>
       <StartingAt169/>
     </div>
   );

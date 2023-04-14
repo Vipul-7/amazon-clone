@@ -5,9 +5,9 @@ $top-div-background-color: #232f3e;
 
   &-close {
     position: absolute;
-    top: 2rem;
+    top:0;
     left: 26.4%;
-    z-index: 30;
+    z-index: 100;
 
     background-color: transparent;
     border: none;

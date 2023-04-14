@@ -1,12 +1,12 @@
 import React from "react";
-import ProductsSlider from "..";
 import Header from "../Header";
 import CarouselBlock from "../CarouselBlock";
 import ImageCard from "../ImageCard";
+import SlidersMainBlock from "../SlidersMainBlock";
 
 const StartingAt169 = () => {
   return (
-    <ProductsSlider>
+    <SlidersMainBlock>
       <Header title="Starting ₹169 | Amazon Brands & more" />
       <CarouselBlock>
         <ImageCard image="https://m.media-amazon.com/images/I/71an936aKEL._AC_SY400_.jpg"/>
@@ -17,7 +17,7 @@ const StartingAt169 = () => {
         <ImageCard image="https://m.media-amazon.com/images/I/71P5Zvn-3tL._AC_SY400_.jpg"/>
         <ImageCard image="https://m.media-amazon.com/images/I/81MUUiOp1iL._AC_SY200_.jpg"/>
       </CarouselBlock>
-    </ProductsSlider>
+    </SlidersMainBlock>
   );
 };
 

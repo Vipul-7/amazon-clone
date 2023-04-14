@@ -15,9 +15,11 @@
   width: 25.48%;
   height: 100vh;
   background-color: white;
-  z-index: 30;
+  z-index: 31;
 
   animation: leftToRight 0.3s ease-out;
+
+  // margin-top: 6rem;
 }
 
 @keyframes leftToRight {
