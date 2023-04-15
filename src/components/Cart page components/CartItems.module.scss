@@ -1,0 +1,50 @@
+$grey-text-color: #565659;
+$border: 1px solid #bebec1;
+
+.main {
+  padding: 2rem;
+  background-color: #fff;
+  flex-basis: 80%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+
+  border-bottom: $border;
+
+  h2 {
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--text-color);
+    line-height: 3.6rem;
+  }
+
+  p {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: $grey-text-color;
+    align-self: flex-end;
+  }
+}
+
+.subtotal {
+  font-size: 1.8rem;
+  line-height: 2rem;
+  color: var(--text-color);
+
+  padding-top: .8rem;
+
+  display: flex;
+  justify-content: flex-end;
+
+  border-top: $border;
+
+  margin-bottom: 1.4rem;
+
+  span {
+    padding-left: 5px;
+    font-weight: 700;
+    line-height: 2.4rem;
+  }
+}

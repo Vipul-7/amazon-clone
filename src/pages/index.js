@@ -5,7 +5,6 @@ import SideNavigation from "@/components/Navigation Bars/SideNavigation";
 import ImageSliders from "@/components/Navigation Bars/ImageSliders";
 import GWCardLayout from "@/components/GW Card Layout/GWCardLayout";
 import ProductsSlider from "@/components/Products Slider Layout";
-import StartingAt169 from "@/components/Products Slider Layout/Starting at 169/StartingAt169";
 
 export default function Home() {
   return (
@@ -14,9 +13,9 @@ export default function Home() {
         <title>amazon</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SideNavigation />
+      {/* <SideNavigation />
       <NavBelt />
-      <NavBarMain />
+      <NavBarMain /> */}
       <ImageSliders />
       <GWCardLayout />
 

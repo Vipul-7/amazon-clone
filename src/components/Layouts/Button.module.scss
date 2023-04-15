@@ -1,0 +1,20 @@
+$color-border-hover: rgb(185, 109, 109);
+$color-text-hover : rgb(188, 85, 85);
+
+.button {
+  font-size: 1.4rem;
+  // line-height: 2rem;
+  color: var(--link-color);
+
+  align-self: flex-start;
+
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  &:hover {
+    color: $color-text-hover;
+    border-bottom: 1.5px solid $color-border-hover;
+  }
+}
