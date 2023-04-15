@@ -7,6 +7,8 @@
   --border-radius-for-hover: 2px;
 
   --button-backgrond-yellow-orange-color: rgb(255, 213, 0);
+
+  --border-for-Cart: 1px solid #d7d5d5;
 }
 
 * {

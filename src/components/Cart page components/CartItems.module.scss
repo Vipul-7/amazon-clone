@@ -1,5 +1,4 @@
 $grey-text-color: #565659;
-$border: 1px solid #bebec1;
 
 .main {
   padding: 2rem;
@@ -11,7 +10,7 @@ $border: 1px solid #bebec1;
   display: flex;
   flex-direction: column;
 
-  border-bottom: $border;
+  border-bottom: var(--border-for-Cart);
 
   h2 {
     font-size: 2.8rem;
@@ -33,12 +32,12 @@ $border: 1px solid #bebec1;
   line-height: 2rem;
   color: var(--text-color);
 
-  padding-top: .8rem;
+  padding-top: 0.8rem;
 
   display: flex;
   justify-content: flex-end;
 
-  border-top: $border;
+  //   border-top: $border;
 
   margin-bottom: 1.4rem;
 
