@@ -5,7 +5,7 @@ $top-div-background-color: #232f3e;
 
   &-close {
     position: absolute;
-    top:0;
+    top: 0;
     left: 26.4%;
     z-index: 100;
 
@@ -28,6 +28,8 @@ $top-div-background-color: #232f3e;
   display: flex;
   align-items: center;
 
+  // position: fixed;
+
   svg {
     width: 2.5rem;
     height: 2.5rem;
@@ -48,8 +50,6 @@ $top-div-background-color: #232f3e;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  overflow: scroll;
 
   h4 {
     font-size: 1.8rem;
@@ -84,5 +84,9 @@ $top-div-background-color: #232f3e;
 
   section:not(:first-child) {
     border-top: 1px solid #ccc;
+  }
+
+  section:last-child{
+    margin-bottom: 5rem;
   }
 }
