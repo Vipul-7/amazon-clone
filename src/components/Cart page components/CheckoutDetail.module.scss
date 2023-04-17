@@ -1,0 +1,27 @@
+$color: #067D62;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 26rem;
+  width: 30rem;
+
+  margin: 0 2rem;
+  padding: 2rem;
+
+  background-color: #fff;
+}
+
+.upper-text {
+  font-size: 1.2rem;
+
+  div {
+    display: flex;
+    color: $color;
+
+    svg {
+      fill: $color;
+    }
+  }
+}

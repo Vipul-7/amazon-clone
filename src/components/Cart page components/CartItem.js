@@ -36,7 +36,7 @@ const CartItem = (props) => {
           <span>{props.colour}</span>
         </div>
         <div className={styles.actions}>
-          <select name="quantity" id="quantity" >
+          <select name="quantity" id="quantity">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>

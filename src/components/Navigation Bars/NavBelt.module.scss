@@ -273,6 +273,10 @@ $light-text-color: #ccc;
     padding: 0 0.9rem 1.1rem 0.9rem;
     margin: 0 1.1rem 0 0.2rem;
 
+    text-decoration: none;
+    color:#fff;
+
+
     &-detail {
       display: flex;
       flex-direction: column;

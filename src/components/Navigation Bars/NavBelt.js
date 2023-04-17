@@ -5,6 +5,7 @@ import LocationIcon from "../Icons/LocationIcon";
 import SearchIcon from "../Icons/SearchIcon";
 import DrowDownIcon from "../Icons/DrowDownIcon";
 import CartMain from "../Icons/CartMain";
+import Link from "next/link";
 
 const NavBelt = () => {
   return (
@@ -70,7 +71,7 @@ const NavBelt = () => {
           <span className={styles["nav-right__orders-child"]}>& Orders</span>
         </section>
 
-        <section className={styles["nav-right__cart"]}>
+        <Link href="cart" className={styles["nav-right__cart"]}>
           <div className={styles["nav-right__cart-detail"]}>
             <span className={styles["nav-right__cart-detail-number"]}>0</span>
             <span className={styles["nav-right__cart-detail-icon"]}>
@@ -78,7 +79,7 @@ const NavBelt = () => {
             </span>
           </div>
           <span className={styles["nav-right__cart-text"]}>Cart</span>
-        </section>
+        </Link>
       </div>
     </nav>
   );

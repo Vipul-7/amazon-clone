@@ -12,7 +12,7 @@ const CartItems = (props) => {
       title:
         "Mivi DuoPods M80 Bluetooth 5.0 Wireless Earbuds with 20H Playtime, IPX5 Water Resistance, Type-C Charging Case, in-Ear Detection, Touch Controls, Dual Mics, (Black)",
       colour: "Black",
-      price: 399,
+      price: 399.00,
     },
     {
       id: "p1",
@@ -20,7 +20,7 @@ const CartItems = (props) => {
       title:
         "Mivi DuoPods M80 Bluetooth 5.0 Wireless Earbuds with 20H Playtime, IPX5 Water Resistance, Type-C Charging Case, in-Ear Detection, Touch Controls, Dual Mics, (Black)",
       colour: "Black",
-      price: 399,
+      price: 399.00,
     },
   ];
   return (
