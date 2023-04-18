@@ -6,8 +6,11 @@ import SearchIcon from "../Icons/SearchIcon";
 import DrowDownIcon from "../Icons/DrowDownIcon";
 import CartMain from "../Icons/CartMain";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const NavBelt = () => {
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
   return (
     <nav className={styles.nav}>
       <div className={styles["nav-left"]}>
@@ -73,7 +76,9 @@ const NavBelt = () => {
 
         <Link href="cart" className={styles["nav-right__cart"]}>
           <div className={styles["nav-right__cart-detail"]}>
-            <span className={styles["nav-right__cart-detail-number"]}>0</span>
+            <span className={styles["nav-right__cart-detail-number"]}>
+              {totalQuantity}
+            </span>
             <span className={styles["nav-right__cart-detail-icon"]}>
               <CartMain />
             </span>

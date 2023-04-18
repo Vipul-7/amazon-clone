@@ -1,26 +1,9 @@
 const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
-  items: [
-    {
-      id: "p1",
-      image: "https://m.media-amazon.com/images/I/61TmcMQHB+L._AC_AA360_.jpg",
-      title:
-        "Mivi DuoPods M80 Bluetooth 5.0 Wireless Earbuds with 20H Playtime, IPX5 Water Resistance, Type-C Charging Case, in-Ear Detection, Touch Controls, Dual Mics, (Black)",
-      colour: "Black",
-      price: 399.0,
-    },
-    {
-      id: "p1",
-      image: "https://m.media-amazon.com/images/I/61TmcMQHB+L._AC_AA360_.jpg",
-      title:
-        "Mivi DuoPods M80 Bluetooth 5.0 Wireless Earbuds with 20H Playtime, IPX5 Water Resistance, Type-C Charging Case, in-Ear Detection, Touch Controls, Dual Mics, (Black)",
-      colour: "Black",
-      price: 399.0,
-    },
-  ],
-  totalQuantity: 10,
-  subTotal: 2246,
+  items: [],
+  totalQuantity: 0,
+  subTotal: 0,
 };
 
 const cartSlice = createSlice({
@@ -153,4 +136,5 @@ const cartSlice = createSlice({
   },
 });
 
+export const cartSliceActions = cartSlice.actions;
 export default cartSlice;

@@ -1,9 +1,13 @@
 .button {
-    color: #0f1111;
-    border: none;
-    background-color: var(--button-backgrond-yellow-orange-color);
-    padding: 1rem;
-    width: 100%;
-    border-radius: 1rem;
-    cursor: pointer;
+  color: #0f1111;
+  border: none;
+  background-color: var(--button-backgrond-yellow-orange-color);
+  padding: 1rem;
+  width: 100%;
+  border-radius: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(233, 194, 2);
   }
+}

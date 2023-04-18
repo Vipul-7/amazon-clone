@@ -49,7 +49,7 @@ const CheckoutDetail = (props) => {
         </div>
       </section>
       <section className={styles.button}>
-        <YellowButton text="Proceed to checkout" />
+        <YellowButton text="Proceed to Buy" />
       </section>
       <section className={styles.emi}>
         <h5>EMI Available</h5>

@@ -10,8 +10,7 @@ const CartItems = () => {
   const TotalItemsCount = useSelector((state) => state.cart.totalQuantity);
   const subTotal = useSelector((state) => state.cart.subTotal);
 
-  // const DUMMY_CART_ITEMS = ;
-
+  
   return (
     <div className={styles.main}>
       <section className={styles.header}>
