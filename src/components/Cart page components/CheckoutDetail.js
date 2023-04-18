@@ -4,8 +4,12 @@ import CorrectIcon from "../Icons/CorrectIcon";
 import YellowButton from "../Layouts/YellowButton";
 import ChevronDownIcon from "../Icons/ChevronDownIcon";
 import Button from "../Layouts/Button";
+import { useSelector } from "react-redux";
 
 const CheckoutDetail = (props) => {
+  const TotalItemsCount = useSelector((state) => state.cart.totalQuantity);
+  const subTotal = useSelector((state) => state.cart.subTotal);
+
   return (
     <div className={styles.main}>
       <section className={styles["upper-text"]}>
@@ -24,17 +28,19 @@ const CheckoutDetail = (props) => {
       <section className={styles["second-division"]}>
         <div className={styles.subTotal}>
           <span className={styles["subTotal__text"]}>
-            Subtotal ({props.totalItems} items):
+            Subtotal ({TotalItemsCount} items):
           </span>
           <span className={styles["subTotal__amount"]}>
             <span
               style={{
                 fontSize: "14px",
+                fontWeight: "400",
+                marginRight:'2px'
               }}
             >
               ₹
             </span>
-            {props.subTotal}
+            {subTotal}
           </span>
         </div>
         <div className={styles.gift}>

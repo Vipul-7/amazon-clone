@@ -3,26 +3,15 @@ import styles from "./CartItems.module.scss";
 import Button from "../Layouts/Button";
 
 import CartItem from "./CartItem";
+import { useSelector } from "react-redux";
 
-const CartItems = (props) => {
-  const DUMMY_CART_ITEMS = [
-    {
-      id: "p1",
-      image: "https://m.media-amazon.com/images/I/61TmcMQHB+L._AC_AA360_.jpg",
-      title:
-        "Mivi DuoPods M80 Bluetooth 5.0 Wireless Earbuds with 20H Playtime, IPX5 Water Resistance, Type-C Charging Case, in-Ear Detection, Touch Controls, Dual Mics, (Black)",
-      colour: "Black",
-      price: 399.00,
-    },
-    {
-      id: "p1",
-      image: "https://m.media-amazon.com/images/I/61TmcMQHB+L._AC_AA360_.jpg",
-      title:
-        "Mivi DuoPods M80 Bluetooth 5.0 Wireless Earbuds with 20H Playtime, IPX5 Water Resistance, Type-C Charging Case, in-Ear Detection, Touch Controls, Dual Mics, (Black)",
-      colour: "Black",
-      price: 399.00,
-    },
-  ];
+const CartItems = () => {
+  const cartItems = useSelector((state) => state.cart.items);
+  const TotalItemsCount = useSelector((state) => state.cart.totalQuantity);
+  const subTotal = useSelector((state) => state.cart.subTotal);
+
+  // const DUMMY_CART_ITEMS = ;
+
   return (
     <div className={styles.main}>
       <section className={styles.header}>
@@ -31,7 +20,7 @@ const CartItems = (props) => {
         <p>Price</p>
       </section>
       <section>
-        {DUMMY_CART_ITEMS.map((item) => (
+        {cartItems.map((item) => (
           <CartItem
             key={item.id}
             image={item.image}
@@ -42,8 +31,19 @@ const CartItems = (props) => {
         ))}
       </section>
       <section className={styles.subtotal}>
-        SubTotal (8{props.TotalItemsCount} items):
-        <span>₹{props.subTotal}1,698.00</span>{" "}
+        SubTotal ({TotalItemsCount} items):
+        <span>
+          <span
+            style={{
+              fontSize: "14px",
+              fontWeight: "400",
+              marginRight: "2px",
+            }}
+          >
+            ₹
+          </span>
+          {subTotal}
+        </span>{" "}
       </section>
     </div>
   );

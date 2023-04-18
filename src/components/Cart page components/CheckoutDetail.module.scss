@@ -31,7 +31,7 @@ $color: #067d62;
       display: flex;
 
       button {
-        margin-left: .7rem;
+        margin-left: 0.7rem;
         font-size: 1.2rem;
       }
     }
@@ -46,12 +46,11 @@ $color: #067d62;
 .second-division {
   .subTotal {
     font-size: 1.8rem;
-    &___text {
-    }
 
-    &___amount {
+    &__amount {
       margin-left: 0.4rem;
       font-weight: 700;
+
     }
   }
 

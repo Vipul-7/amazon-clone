@@ -8,7 +8,7 @@ const CartPageComponents = () => {
     <div className={styles.main}>
       <CartItems />
       <div>
-        <CheckoutDetail subTotal="2,246.00" totalItems="10" />
+        <CheckoutDetail />
       </div>
     </div>
   );

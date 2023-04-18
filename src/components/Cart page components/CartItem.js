@@ -50,7 +50,18 @@ const CartItem = (props) => {
         </div>
       </section>
       <section className={styles.price}>
-        <h3>₹{props.price}</h3>
+        <h3>
+          <span
+            style={{
+              fontSize: "14px",
+              fontWeight: "400",
+              marginRight: "2px",
+            }}
+          >
+            ₹
+          </span>
+          {props.price}
+        </h3>
       </section>
     </div>
   );
