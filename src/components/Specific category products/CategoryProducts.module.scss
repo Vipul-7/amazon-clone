@@ -1,0 +1,18 @@
+.main{
+    display: flex;
+    padding: 1rem;
+
+    .extra-info{
+        flex-basis: 46%;
+    }
+
+    .products{
+        background-color: red;
+        flex-grow: 1;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0,1fr));
+       
+        height: 100%;
+        padding: 1rem;
+    }
+}
