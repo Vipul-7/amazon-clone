@@ -1,9 +1,139 @@
-.main{
-    height: 40vh;
+$rating-count-color: #007185;
+$prices-color: #565959;
+
+.main {
+  background: white;
+  height: 68vh;
+
+  padding: 1rem;
 }
 
-.image{
-    height: 100%;
-    width: 50%;
+.image {
+  img {
+    height: 48%;
+    width: 96%;
     object-fit: cover;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--text-color);
+  }
+
+  .rating-info {
+    display: flex;
+    align-items: center;
+
+    padding: 0.3rem 0;
+
+    .icons1 {
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 1.8rem;
+        fill: #e59f1c;
+      }
+      margin-right: 0.4rem;
+    }
+
+    .diff {
+      display: flex;
+      align-items: center;
+      svg {
+        fill: $rating-count-color;
+        width: 1.2rem;
+        height: 1.5rem;
+      }
+      span {
+        font-size: 1.4rem;
+        color: $rating-count-color;
+      }
+    }
+  }
+
+  .extra-label {
+    width: 45%;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2rem;
+
+    padding: 0.3rem 1rem;
+    background-color: #b12704;
+  }
+
+  .price-details {
+    color: $prices-color;
+    padding: 1.5rem 0;
+
+    &__upper {
+      font-size: 1.3rem;
+
+      &-offerPrice {
+        color: var(--text-color);
+        font-size: 2.8rem;
+
+        margin-right: 0.6rem;
+
+        span {
+          font-size: 1.4rem;
+          font-weight: 400;
+          margin-right: 0rem;
+        }
+      }
+
+      .span2 {
+        span {
+          font-size: 1.1rem;
+        }
+      }
+
+      .span3 {
+        color: var(--text-color);
+      }
+    }
+
+    &__lower {
+      font-size: 1.4rem;
+    }
+  }
+
+  .delivery-details {
+    position: relative;
+    &__upper {
+      font-size: 1.4rem;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 1.6rem;
+        height: 1.3rem;
+        fill: #e59f1c;
+      }
+
+      .prime {
+        color: #238a9c;
+        font-weight: 700;
+        margin-right: 2px;
+      }
+
+      .date {
+        margin-left: 2px;
+        font-weight: 700;
+      }
+    }
+
+    &__lower {
+      // margin-top: -4px;
+      font-size: 1.4rem;
+    }
+  }
 }
