@@ -1,7 +1,7 @@
 import ProductCard from "./ProductCard";
 import styles from "./CategoryProducts.module.scss";
 
-const CategoryProducts = () => {
+const CategoryProducts = (props) => {
   const DUMMY_PRODUCTS = [
     {
       id: "i1",
@@ -71,7 +71,7 @@ const CategoryProducts = () => {
         <section className={styles.products}>
           <h2>RESULTS</h2>
           <section className={styles["products-cards"]}>
-            {DUMMY_PRODUCTS.map((product) => (
+            {props.products.map((product) => (
               <ProductCard
                 key={product.id}
                 image={product.image}
