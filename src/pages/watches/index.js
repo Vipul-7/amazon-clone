@@ -36,6 +36,7 @@ export const getStaticProps = async () => {
         id: product._id.toString(),
       })),
     },
+    revalidate: 1,
   };
 };
 

@@ -28,7 +28,7 @@ const ProductCard = (props) => {
             <span>2,472</span>
           </section>
         </section>
-        <div className={styles["extra-label"]}>Limited time deal</div>
+        {/* <div className={styles["extra-label"]}>Limited time deal</div> */}
         <section className={styles["price-details"]}>
           <div className={styles["price-details__upper"]}>
             <span className={styles["price-details__upper-offerPrice"]}>

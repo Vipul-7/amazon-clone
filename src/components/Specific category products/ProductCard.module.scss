@@ -9,8 +9,9 @@ $prices-color: #565959;
 }
 
 .image {
+  position: relative;
   img {
-    height: 48%;
+    height: 26rem;
     width: 96%;
     object-fit: cover;
   }

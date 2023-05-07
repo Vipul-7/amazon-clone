@@ -4,8 +4,11 @@ import CardOneItem from "./CardOneItem";
 import CardButtonAndAdItem from "./CardButtonAndAdItem";
 
 import styles from "./GWCardLayout.module.scss";
+import { useRouter } from "next/router";
 
 const GWCardLayout = () => {
+  const router = useRouter();
+
   return (
     <main className={styles.main}>
       <CardFourItems
@@ -36,7 +39,8 @@ const GWCardLayout = () => {
         title="Bluetooth Calling Smartwatch starts at ₹1,999
       "
         image="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wearables/PC_CategoryCard_758X608_1._SY608_CB614835787_.jpg"
-        bottomText="Shop now"
+        buttonText="Shop now"
+        onClick={() => router.push("watches")}
       />
       <CardButtonAndAdItem
         title="Sign in for your best experience"
@@ -44,10 +48,10 @@ const GWCardLayout = () => {
         image="https://m.media-amazon.com/images/G/31/img19/AMS/Houseads/Laptops-Sept2019._CB436595915_.jpg"
       />
       <CardOneItem
-        title="Up to 50% off | Monitor blood sugar at home
+        title="Up to 75% off | Electronics & accessories
       "
-        image="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Pharmacy/CC_high_3._SY608_CB592656736_.jpg"
-        bottomText="Visit the store"
+        image="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Laptops/MayART23/PC_CategoryCard_758X608._SY608_CB590891227_.jpg"
+        buttonText="Visit the store"
       />
       <CardFourItems
         title="Up to 70% off | Styles for women"
