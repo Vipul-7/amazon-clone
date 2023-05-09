@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CheckIcon from "../Icons/CheckIcon";
 import ChevronDownIcon from "../Icons/ChevronDownIcon";
 import CorrectIcon from "../Icons/CorrectIcon";
@@ -7,13 +8,18 @@ import RightArrowIcon from "../Icons/RightArrowIcon";
 import styles from "./ProductCard.module.scss";
 
 const ProductCard = (props) => {
+  const productId = `${props.id}`;
   return (
     <div className={styles.main}>
-      <section className={styles.image}>
-        <img src={props.image} alt="product" />
-      </section>
+      <Link href={productId}>
+        <section className={styles.image}>
+          <img src={props.image} alt="product" />
+        </section>
+      </Link>
       <section className={styles.details}>
-        <h4 className={styles.title}>{props.title}</h4>
+        <Link href={productId}>
+          <h4 className={styles.title}>{props.title}</h4>
+        </Link>
         <section className={styles["rating-info"]}>
           <section className={styles.icons1}>
             <RatingStarFull />
