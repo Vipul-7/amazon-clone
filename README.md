@@ -2,9 +2,7 @@
 
 # Description
 
-I'm making this project for practise my react skills. If you want to join me and want to make this project together then you can also raise PR.
-
-Want to discuss with me then write on issue tab.
+I'm making this project for practice my react skills. If you want to join me and want to make this project together then you can also raise PR.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
