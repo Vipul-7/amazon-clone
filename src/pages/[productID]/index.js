@@ -1,7 +1,11 @@
-import { MongoClient, ObjectId } from "mongodb";
+import { MongoClient } from "mongodb";
 
 const ProductPage = ({ productData }) => {
-  return <></>;
+  return (
+    <>
+      <h1>Hello</h1>
+    </>
+  );
 };
 
 export default ProductPage;
@@ -18,7 +22,7 @@ export const getStaticProps = async (context) => {
   const collections = await db.listCollections().toArray();
 
   // const data = [];
-  const selectedProduct = {};
+  let selectedProduct = {};
 
   for (const collection of collections) {
     const data = await db.collection(collection.name).find({}).toArray();
@@ -56,7 +60,7 @@ export const getStaticPaths = async () => {
 
   const collections = await db.listCollections().toArray();
 
-  const paths = [];
+  let paths = [];
 
   for (const collection of collections) {
     const data = await db

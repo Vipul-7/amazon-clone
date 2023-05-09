@@ -21,6 +21,7 @@ const CategoryProducts = (props) => {
             {props.products.map((product) => (
               <ProductCard
                 key={product.id}
+                id={product.id}
                 image={product.image}
                 title={product.title}
                 offerPrice={product.offerPrice}

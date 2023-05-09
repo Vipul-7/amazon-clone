@@ -22,10 +22,18 @@ $prices-color: #565959;
   flex-direction: column;
   justify-content: space-between;
 
-  .title {
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: var(--text-color);
+  a {
+    text-decoration: none;
+
+    .title {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--text-color);
+
+      &:hover {
+        color: #c7511f;
+      }
+    }
   }
 
   .rating-info {
