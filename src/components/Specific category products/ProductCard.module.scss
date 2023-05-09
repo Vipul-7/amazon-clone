@@ -31,7 +31,7 @@ $prices-color: #565959;
       color: var(--text-color);
 
       &:hover {
-        color: #c7511f;
+        color: var(--dark-orange-color-for-hover-link);
       }
     }
   }
@@ -48,7 +48,7 @@ $prices-color: #565959;
 
       svg {
         width: 1.8rem;
-        fill: #e59f1c;
+        fill: var(--light-orange-color-for-rating);
       }
       margin-right: 0.4rem;
     }

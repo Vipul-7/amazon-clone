@@ -9,6 +9,9 @@
   --button-backgrond-yellow-orange-color: rgb(255, 213, 0);
 
   --border-for-Cart: 1px solid #d7d5d5;
+
+  --light-orange-color-for-rating: #e59f1c;
+  --dark-orange-color-for-hover-link: #c7511f;
 }
 
 * {

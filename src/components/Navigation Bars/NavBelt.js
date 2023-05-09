@@ -14,10 +14,12 @@ const NavBelt = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles["nav-left"]}>
-        <div className={styles["nav-left__logo"]}>
-          <AmazonLogo />
-          <h4 className={styles["nav-left__logo-text"]}>.in</h4>
-        </div>
+        <Link href="/">
+          <div className={styles["nav-left__logo"]}>
+            <AmazonLogo />
+            <h4 className={styles["nav-left__logo-text"]}>.in</h4>
+          </div>
+        </Link>
 
         <div className={styles["nav-left__location"]}>
           <span>
