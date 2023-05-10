@@ -1,9 +1,10 @@
+import ProductMain from "@/components/Single Product/ProductMain";
 import { MongoClient } from "mongodb";
 
 const ProductPage = ({ productData }) => {
   return (
     <>
-      <h1>Hello</h1>
+      <ProductMain productData={productData} />
     </>
   );
 };
@@ -45,6 +46,8 @@ export const getStaticProps = async (context) => {
         offerPrice: selectedProduct.offerPrice,
         actualPrice: selectedProduct.actualPrice,
         offerPercentage: selectedProduct.offerPercentage,
+        metaData: selectedProduct.metaData,
+        aboutItem: selectedProduct.aboutItem,
         id: selectedProduct._id.toString(),
       },
     },

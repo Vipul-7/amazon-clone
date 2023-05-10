@@ -9,6 +9,8 @@ import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 
 export default function App({ Component, pageProps }) {
+  NProgress.configure({ showSpinner: false });
+  
   useEffect(() => {
     const handleRouteChangeStart = (url) => {
       NProgress.start();
