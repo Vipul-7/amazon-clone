@@ -16,7 +16,7 @@ const ProductMain = (props) => {
           aboutItem={props.productData.aboutItem}
           metaData={props.productData.metaData}
           offerPrice={props.productData.offerPrice}
-          actualPrice={props.productData.actualProce}
+          actualPrice={props.productData.actualPrice}
           offerPercentage={props.productData.offerPercentage}
         />
       </div>

@@ -1,15 +1,21 @@
 .main {
+  color: var(--text-color);
   display: flex;
+  padding: 1rem;
 }
 
 .visuals {
+  flex-basis: 49%;
   border: 2px solid black;
 }
 
 .details {
+  flex-basis: 60%;
   border: 2px solid black;
+  padding: 1rem;
 }
 
 .actions {
   border: 2px solid black;
+  flex-basis: 25%;
 }
