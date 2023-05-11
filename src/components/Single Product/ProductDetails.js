@@ -4,6 +4,9 @@ import Button from "../Layouts/Button";
 import RatingStarFull from "../Icons/RatingStarFull";
 import RatingStarEmpty from "../Icons/RatingStarEmpty";
 import ChevronDownIcon from "../Icons/ChevronDownIcon";
+import OfferIcon from "../Icons/OfferIcon";
+import OffersCard from "./OffersCard";
+import ServicesOnProduct from "./ServicesOnProduct";
 
 const ProductDetails = (props) => {
   return (
@@ -58,26 +61,44 @@ const ProductDetails = (props) => {
           <span className={styles.s1}>EMI</span>starts at ₹78. No Cost EMI
           available
           <span className={styles.s2}>EMI options</span>
-          <ChevronDownIcon/>
+          <ChevronDownIcon />
         </p>
       </div>
 
       <div className={styles.container3}>
-        <section>
-          <span></span>
+        <section className={styles.offerTitle}>
+          <OfferIcon />
           <span>Offers</span>
         </section>
-        {"Carousel"}
+        <div className={styles.offersSlider}>
+          <OffersCard
+            title="No Cost EMI"
+            description="Upto ₹81.03 EMI interest savings on Amazon Pay ICICI…"
+            offersCount="2 offers"
+          />
+          <OffersCard
+            title="Bank Offer"
+            description="Upto ₹179.90 discount on select Credit Cards"
+            offersCount="5 offers"
+          />
+          <OffersCard
+            title="Partner Offers"
+            description="Get GST invoice and save up to 28% on business purchases."
+            offersCount="1 offers"
+          />
+        </div>
       </div>
 
-      <div className={styles.container4}></div>
+      <div className={styles.container4}>
+        <ServicesOnProduct />
+      </div>
 
       <div className={styles.container5}>
         {/* Object.keys returns an array of keys */}
         {Object.keys(props.metaData).map((key) => (
           <section key={key}>
-            <span>{key}</span>
-            <span>{props.metaData[key]}</span>
+            <p className={styles.key}>{key}</p>
+            <p className={styles.value}>{props.metaData[key]}</p>
           </section>
         ))}
       </div>

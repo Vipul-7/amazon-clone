@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem;
+  width: 10rem;
+
+  img {
+    width: 50%;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #007185;
+  }
+}

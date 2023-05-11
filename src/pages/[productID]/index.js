@@ -3,9 +3,9 @@ import { MongoClient } from "mongodb";
 
 const ProductPage = ({ productData }) => {
   return (
-    <>
+    <div style={{ backgroundColor: "#fff" }}>
       <ProductMain productData={productData} />
-    </>
+    </div>
   );
 };
 
