@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./ProductDetails.module.scss";
-import Button from "../Layouts/Button";
-import RatingStarFull from "../Icons/RatingStarFull";
-import RatingStarEmpty from "../Icons/RatingStarEmpty";
-import ChevronDownIcon from "../Icons/ChevronDownIcon";
-import OfferIcon from "../Icons/OfferIcon";
+import Button from "../../Layouts/Button";
+import RatingStarFull from "../../Icons/RatingStarFull";
+import RatingStarEmpty from "../../Icons/RatingStarEmpty";
+import ChevronDownIcon from "../../Icons/ChevronDownIcon";
+import OfferIcon from "../../Icons/OfferIcon";
 import OffersCard from "./OffersCard";
 import ServicesOnProduct from "./ServicesOnProduct";
 

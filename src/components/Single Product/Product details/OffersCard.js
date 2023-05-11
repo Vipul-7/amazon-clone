@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../Layouts/Button";
+import Button from "@/components/Layouts/Button";
 import styles from "./OffersCard.module.scss";
-import ChevronDownIcon from "../Icons/ChevronDownIcon";
+import ChevronDownIcon from "@/components/Icons/ChevronDownIcon";
 
 const OffersCard = (props) => {
   return (
