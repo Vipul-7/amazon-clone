@@ -5,6 +5,11 @@ import LocationIcon from "@/components/Icons/LocationIcon";
 import YellowButton from "@/components/Layouts/YellowButton";
 
 const ProductActions = (props) => {
+  
+  const addToCartHandler = () => {
+    props.onClick();
+  };
+
   return (
     <main className={styles.main}>
       <section className="offer-price">
@@ -60,7 +65,7 @@ const ProductActions = (props) => {
       </section>
 
       <section className={styles.addToCart}>
-        <YellowButton text="Add to Cart" />
+        <YellowButton text="Add to Cart" onClick={addToCartHandler} />
       </section>
       <section className={styles.buyNow}>
         <YellowButton text="Buy Now" />
