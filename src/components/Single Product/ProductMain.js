@@ -1,6 +1,7 @@
 // import ProductActions from "./Product Actions/ProductActions";
 import ProductDetails from "./Product details/ProductDetails";
 import ProductVisuals from "./Product Visual/ProductVisuals";
+import ProductActions from "./Product Actions/ProductActions";
 
 import styles from "./ProductMain.module.scss";
 
@@ -21,7 +22,10 @@ const ProductMain = (props) => {
         />
       </div>
       <div className={styles.actions}>
-        {/* <ProductActions /> */}
+        <ProductActions
+          price={props.productData.offerPrice}
+          brandName={props.productData.metaData.Brand}
+        />
       </div>
     </main>
   );
