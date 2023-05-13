@@ -35,7 +35,7 @@ const cartSlice = createSlice({
       state.subTotal = state.subTotal + newItem.price;
       state.totalQuantity++;
 
-      // changes in local storage
+      // changes in local storage - cartItems
 
       const cartItems = JSON.parse(localStorage.getItem("cartItems"));
       const cartItemsArray = cartItems ? cartItems : [];
@@ -59,6 +59,8 @@ const cartSlice = createSlice({
 
       localStorage.setItem("cartItems", JSON.stringify(cartItemsArray));
 
+      // changes in local storage - totalQuantity
+
       const totalQuantity = JSON.parse(localStorage.getItem("totalQuantity"));
       const totalQuantityNumber = totalQuantity ? totalQuantity : 0;
 
@@ -66,6 +68,8 @@ const cartSlice = createSlice({
         "totalQuantity",
         JSON.stringify(totalQuantityNumber + 1)
       );
+
+      // changes in local storage - subTotal
 
       const subTotal = JSON.parse(localStorage.getItem("subTotal"));
       const subTotalNumber = subTotal ? subTotal : 0;
@@ -80,48 +84,94 @@ const cartSlice = createSlice({
       const id = action.payload;
       const existingItem = state.items.find((item) => item.id === id);
 
-      if (existingItem.quantity === 1) {
-        state.items = state.items.filter((item) => item.id !== id);
-      } else {
-        existingItem.quantity--;
-      }
+      state.items = state.items.filter((item) => item.id !== id);
 
-      state.subTotal = state.subTotal - existingItem.price;
-      state.totalQuantity--;
+      state.subTotal =
+        state.subTotal - existingItem.price * existingItem.quantity;
+      state.totalQuantity -= existingItem.quantity;
 
-      // changes in local storage
+      // changes in local storage - cartItems
 
       const cartItems = JSON.parse(localStorage.getItem("cartItems"));
       let cartItemsArray = cartItems ? cartItems : [];
 
-      const existingItemInLocalStorage = cartItemsArray.find(
-        (item) => item.id === id
-      );
-
-      if (existingItemInLocalStorage.quantity === 1) {
-        cartItemsArray = cartItemsArray.filter((item) => item.id !== id);
-      } else {
-        existingItemInLocalStorage.quantity--;
-      }
+      cartItemsArray = cartItemsArray.filter((item) => item.id !== id);
 
       localStorage.setItem("cartItems", JSON.stringify(cartItemsArray));
+
+      // changes in local storage - totalQuantity
 
       const totalQuantity = JSON.parse(localStorage.getItem("totalQuantity"));
       const totalQuantityNumber = totalQuantity ? totalQuantity : 0;
 
       localStorage.setItem(
         "totalQuantity",
-        JSON.stringify(totalQuantityNumber - 1)
+        JSON.stringify(totalQuantityNumber - existingItem.quantity)
       );
 
+      // changes in local storage - subTotal
       const subTotal = JSON.parse(localStorage.getItem("subTotal"));
       const subTotalNumber = subTotal ? subTotal : 0;
 
       localStorage.setItem(
         "subTotal",
-        JSON.stringify(subTotalNumber - existingItem.price)
+        JSON.stringify(
+          subTotalNumber - existingItem.price * existingItem.quantity
+        )
       );
     },
+
+    changesInQuantity(state, action) {
+      const { id, newQuantity } = action.payload;
+
+      const existingItem = state.items.find((item) => item.id === id);
+
+      state.subTotal =
+        state.subTotal -
+        existingItem.price * existingItem.quantity +
+        existingItem.price * newQuantity;
+      state.totalQuantity =
+        state.totalQuantity - existingItem.quantity + newQuantity;
+
+      state.subTotal = state.subTotal;
+      existingItem.quantity = newQuantity;
+
+      // changes in local storage - cartItems
+
+      const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+      const cartItemsArray = cartItems ? cartItems : [];
+
+      const existingItemInLocalStorage = cartItemsArray.find(
+        (item) => item.id === id
+      );
+
+      existingItemInLocalStorage.quantity = newQuantity;
+
+      localStorage.setItem("cartItems", JSON.stringify(cartItemsArray));
+
+      // changes in local storage - totalQuantity
+
+      const totalQuantity = JSON.parse(localStorage.getItem("totalQuantity"));
+
+      localStorage.setItem(
+        "totalQuantity",
+        JSON.stringify(totalQuantity - existingItem.quantity + newQuantity)
+      );
+
+      // changes in local storage - subTotal
+
+      const subTotal = JSON.parse(localStorage.getItem("subTotal"));
+
+      localStorage.setItem(
+        "subTotal",
+        JSON.stringify(
+          subTotal -
+            existingItem.price * existingItem.quantity +
+            existingItem.price * newQuantity
+        )
+      );
+    },
+
     clearCart(state) {
       state.items = [];
       state.totalQuantity = 0;
