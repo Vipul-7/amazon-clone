@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./ProductActions.module.scss";
 import Button from "@/components/Layouts/Button";
 import LocationIcon from "@/components/Icons/LocationIcon";
 import YellowButton from "@/components/Layouts/YellowButton";
 
 const ProductActions = (props) => {
-  
+  const quantityInput = useRef();
+
   const addToCartHandler = () => {
-    props.onClick();
+    props.onClick(quantityInput.current.value);
   };
 
   return (
@@ -55,7 +56,7 @@ const ProductActions = (props) => {
 
       <section className={styles.quantity}>
         <label>Quantity: </label>
-        <select name="quantity" id="quantity">
+        <select name="quantity" id="quantity" ref={quantityInput}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>

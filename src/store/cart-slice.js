@@ -19,21 +19,25 @@ const cartSlice = createSlice({
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
 
+      const quantityInNumber = Number(newItem.quantity);
+
+      // changes in state
+
       if (!existingItem) {
         state.items.push({
           id: newItem.id,
           title: newItem.title,
           price: newItem.price,
           image: newItem.image,
-          quantity: 1,
+          quantity: quantityInNumber,
           colour: newItem.colour,
         });
       } else {
-        existingItem.quantity++;
+        existingItem.quantity += quantityInNumber;
       }
 
-      state.subTotal = state.subTotal + newItem.price;
-      state.totalQuantity++;
+      state.subTotal = state.subTotal + newItem.price * quantityInNumber;
+      state.totalQuantity += quantityInNumber;
 
       // changes in local storage - cartItems
 
@@ -50,11 +54,11 @@ const cartSlice = createSlice({
           title: newItem.title,
           price: newItem.price,
           image: newItem.image,
-          quantity: 1,
+          quantity: quantityInNumber,
           colour: newItem.colour,
         });
       } else {
-        existingItemInLocalStorage.quantity++;
+        existingItemInLocalStorage.quantity += quantityInNumber;
       }
 
       localStorage.setItem("cartItems", JSON.stringify(cartItemsArray));
@@ -66,7 +70,7 @@ const cartSlice = createSlice({
 
       localStorage.setItem(
         "totalQuantity",
-        JSON.stringify(totalQuantityNumber + 1)
+        JSON.stringify(totalQuantityNumber + quantityInNumber)
       );
 
       // changes in local storage - subTotal
@@ -76,13 +80,15 @@ const cartSlice = createSlice({
 
       localStorage.setItem(
         "subTotal",
-        JSON.stringify(subTotalNumber + newItem.price)
+        JSON.stringify(subTotalNumber + newItem.price * quantityInNumber)
       );
     },
 
     removeFromCart(state, action) {
       const id = action.payload;
       const existingItem = state.items.find((item) => item.id === id);
+
+      // changes in state
 
       state.items = state.items.filter((item) => item.id !== id);
 
@@ -122,19 +128,22 @@ const cartSlice = createSlice({
     },
 
     changesInQuantity(state, action) {
-      const { id, newQuantity } = action.payload;
+      const { id, quantity } = action.payload;
+      const quantityInNumber = Number(quantity);
 
       const existingItem = state.items.find((item) => item.id === id);
+
+      // changes in state
 
       state.subTotal =
         state.subTotal -
         existingItem.price * existingItem.quantity +
-        existingItem.price * newQuantity;
+        existingItem.price * quantityInNumber;
       state.totalQuantity =
-        state.totalQuantity - existingItem.quantity + newQuantity;
+        state.totalQuantity - existingItem.quantity + quantityInNumber;
 
       state.subTotal = state.subTotal;
-      existingItem.quantity = newQuantity;
+      existingItem.quantity = quantityInNumber;
 
       // changes in local storage - cartItems
 
@@ -145,7 +154,7 @@ const cartSlice = createSlice({
         (item) => item.id === id
       );
 
-      existingItemInLocalStorage.quantity = newQuantity;
+      existingItemInLocalStorage.quantity = quantityInNumber;
 
       localStorage.setItem("cartItems", JSON.stringify(cartItemsArray));
 
@@ -155,7 +164,7 @@ const cartSlice = createSlice({
 
       localStorage.setItem(
         "totalQuantity",
-        JSON.stringify(totalQuantity - existingItem.quantity + newQuantity)
+        JSON.stringify(totalQuantity - existingItem.quantity + quantityInNumber)
       );
 
       // changes in local storage - subTotal
@@ -167,7 +176,7 @@ const cartSlice = createSlice({
         JSON.stringify(
           subTotal -
             existingItem.price * existingItem.quantity +
-            existingItem.price * newQuantity
+            existingItem.price * quantityInNumber
         )
       );
     },

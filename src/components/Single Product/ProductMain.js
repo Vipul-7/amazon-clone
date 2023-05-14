@@ -8,14 +8,14 @@ import styles from "./ProductMain.module.scss";
 const ProductMain = (props) => {
   const dispatch = useDispatch();
 
-  const addToCartHandler = () => {
-    console.log("clicked");
+  const addToCartHandler = (quantity) => {
     dispatch(
       cartSliceActions.addToCart({
         id: props.productData.id,
         title: props.productData.title,
         price: props.productData.offerPrice,
         image: props.productData.image,
+        quantity: quantity,
         colour: "black",
       })
     );

@@ -6,18 +6,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartSliceActions } from "@/store/cart-slice";
 
 const CartItem = (props) => {
-  const IndexOfItem = useSelector((state) => state.cart.items.findIndex((item) => item.id === props.id));
-  const defaultQuantity = useSelector((state) => state.cart.items[IndexOfItem].quantity);
+  const IndexOfItem = useSelector((state) =>
+    state.cart.items.findIndex((item) => item.id === props.id)
+  );
+  const defaultQuantity = useSelector(
+    (state) => state.cart.items[IndexOfItem].quantity
+  );
 
   const dispatch = useDispatch();
 
   const deleteHandler = () => {
     dispatch(cartSliceActions.removeFromCart(props.id));
   };
-  // const selectedVal =
-  // const selectHandler = (e) => {
-  //   console.log(e.target.value);
-  // };
+
+  const selectHandler = (e) => {
+    console.log(e);
+    dispatch(
+      cartSliceActions.changesInQuantity({
+        id: props.id,
+        quantity: e.target.value,
+      })
+    );
+  };
 
   return (
     <div className={styles.main}>
@@ -56,6 +66,7 @@ const CartItem = (props) => {
             name="quantity"
             id="quantity"
             defaultValue={defaultQuantity}
+            onChange={selectHandler}
           >
             <option value="1">1</option>
             <option value="2">2</option>
