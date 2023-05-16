@@ -142,9 +142,6 @@ const cartSlice = createSlice({
       state.totalQuantity =
         state.totalQuantity - existingItem.quantity + quantityInNumber;
 
-      state.subTotal = state.subTotal;
-      existingItem.quantity = quantityInNumber;
-
       // changes in local storage - cartItems
 
       const cartItems = JSON.parse(localStorage.getItem("cartItems"));
@@ -179,6 +176,10 @@ const cartSlice = createSlice({
             existingItem.price * quantityInNumber
         )
       );
+
+      // changes in state
+
+      existingItem.quantity = quantityInNumber; // changes in state
     },
 
     clearCart(state) {

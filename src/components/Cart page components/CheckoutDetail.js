@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./CheckoutDetail.module.scss";
 import CorrectIcon from "../Icons/CorrectIcon";
 import YellowButton from "../Layouts/YellowButton";
@@ -7,8 +7,13 @@ import Button from "../Layouts/Button";
 import { useSelector } from "react-redux";
 
 const CheckoutDetail = (props) => {
+  const [showCheckoutForm, setShowCheckoutForm] = useState(false);
   const TotalItemsCount = useSelector((state) => state.cart.totalQuantity);
   const subTotal = useSelector((state) => state.cart.subTotal);
+
+  const firstClickHandler = () => {
+    setShowCheckoutForm(true);
+  };
 
   return (
     <div className={styles.main}>
@@ -35,7 +40,7 @@ const CheckoutDetail = (props) => {
               style={{
                 fontSize: "14px",
                 fontWeight: "400",
-                marginRight:'2px'
+                marginRight: "2px",
               }}
             >
               ₹
@@ -48,8 +53,13 @@ const CheckoutDetail = (props) => {
           <label>This order contains gift</label>
         </div>
       </section>
+
+      {showCheckoutForm && (
+        <section className={styles["checkout-form"]}></section>
+      )}
+
       <section className={styles.button}>
-        <YellowButton text="Proceed to Buy" />
+        <YellowButton text="Proceed to Buy" onClick={firstClickHandler} />
       </section>
       <section className={styles.emi}>
         <h5>EMI Available</h5>
