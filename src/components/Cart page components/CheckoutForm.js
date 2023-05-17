@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import styles from "./CheckoutForm.module.scss";
 
 const validate = (values) => {
   const errors = {};
@@ -24,7 +25,7 @@ const validate = (values) => {
   return errors;
 };
 
-const CheckoutForm = () => {
+const CheckoutForm = (props) => {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -34,10 +35,13 @@ const CheckoutForm = () => {
       pincode: "",
     },
     validate,
-    onSubmit: (values) => {},
+    onSubmit: (values) => {
+      props.onSubmit(values);
+    },
   });
+
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} className={styles.form}>
       <label htmlFor="name">Name</label>
       <input
         id="name"
@@ -46,6 +50,9 @@ const CheckoutForm = () => {
         onChange={formik.handleChange}
         value={formik.values.name}
       />
+      {formik.touched.name && formik.errors.name ? (
+        <div className={styles.errors}>{formik.errors.name}</div>
+      ) : null}
 
       <label htmlFor="email">Email Address</label>
       <input
@@ -55,6 +62,9 @@ const CheckoutForm = () => {
         onChange={formik.handleChange}
         value={formik.values.email}
       />
+      {formik.touched.email && formik.errors.email ? (
+        <div className={styles.errors}>{formik.errors.email}</div>
+      ) : null}
 
       <label htmlFor="street">Street</label>
       <input
@@ -64,6 +74,9 @@ const CheckoutForm = () => {
         onChange={formik.handleChange}
         value={formik.values.street}
       />
+      {formik.touched.street && formik.errors.street ? (
+        <div className={styles.errors}>{formik.errors.street}</div>
+      ) : null}
 
       <label htmlFor="city">City</label>
       <input
@@ -73,6 +86,9 @@ const CheckoutForm = () => {
         onChange={formik.handleChange}
         value={formik.values.city}
       />
+      {formik.touched.city && formik.errors.city ? (
+        <div className={styles.errors}>{formik.errors.city}</div>
+      ) : null}
 
       <label htmlFor="pincode">Pincode</label>
       <input
@@ -82,6 +98,19 @@ const CheckoutForm = () => {
         onChange={formik.handleChange}
         value={formik.values.pincode}
       />
+      {formik.touched.pincode && formik.errors.pincode ? (
+        <div className={styles.errors}>{formik.errors.pincode}</div>
+      ) : null}
+
+      <button
+        type="submit"
+        className={styles.button}
+        disabled={props.isSending}
+      >
+        Submit
+      </button>
+
+      {props.isSending && <div>Loading...</div>}
     </form>
   );
 };

@@ -4,15 +4,52 @@ import CorrectIcon from "../Icons/CorrectIcon";
 import YellowButton from "../Layouts/YellowButton";
 import ChevronDownIcon from "../Icons/ChevronDownIcon";
 import Button from "../Layouts/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import CheckoutForm from "./CheckoutForm";
+import { cartSliceActions } from "@/store/cart-slice";
 
 const CheckoutDetail = (props) => {
   const [showCheckoutForm, setShowCheckoutForm] = useState(false);
+  const [isSendindData, setIsSendingData] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const items = useSelector((state) => state.cart.items);
   const TotalItemsCount = useSelector((state) => state.cart.totalQuantity);
   const subTotal = useSelector((state) => state.cart.subTotal);
 
-  const firstClickHandler = () => {
+  const showCheckoutFormHandler = () => {
     setShowCheckoutForm(true);
+  };
+
+  const checkoutHandler = async (values) => {
+    setIsSendingData(true);
+    const data = {
+      ...values,
+      items: items,
+      totalQuantity: TotalItemsCount,
+      subTotal,
+    };
+
+    try {
+      const response = await fetch("/api/order", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+      // const data = await response.json();
+
+      dispatch(cartSliceActions.clearCart());
+    } catch (error) {
+      console.log(error);
+    }
+    setIsSendingData(false);
   };
 
   return (
@@ -55,12 +92,19 @@ const CheckoutDetail = (props) => {
       </section>
 
       {showCheckoutForm && (
-        <section className={styles["checkout-form"]}></section>
+        <section className={styles["checkout-form"]}>
+          <CheckoutForm onSubmit={checkoutHandler} isSending={isSendindData} />
+        </section>
       )}
 
-      <section className={styles.button}>
-        <YellowButton text="Proceed to Buy" onClick={firstClickHandler} />
-      </section>
+      {!showCheckoutForm && (
+        <section className={styles.button}>
+          <YellowButton
+            text="Proceed to Buy"
+            onClick={showCheckoutFormHandler}
+          />
+        </section>
+      )}
       <section className={styles.emi}>
         <h5>EMI Available</h5>
         <ChevronDownIcon />
