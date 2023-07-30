@@ -5,7 +5,7 @@ const CategoryProducts = (props) => {
   return (
     <>
       <div className={styles.header}>
-        <h3>24 results</h3>
+        <h3>{props.products.length} results</h3>
         <select name="sort" id="sort">
           <option value="popularity">Popularity</option>
           <option value="price">Price</option>
