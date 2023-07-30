@@ -41,13 +41,13 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       productData: {
-        title: selectedProduct.title,
-        image: selectedProduct.image,
-        offerPrice: selectedProduct.offerPrice,
-        actualPrice: selectedProduct.actualPrice,
-        offerPercentage: selectedProduct.offerPercentage,
-        metaData: selectedProduct.metaData,
-        aboutItem: selectedProduct.aboutItem,
+        title: selectedProduct.title | null,
+        image: selectedProduct.image | null,
+        offerPrice: selectedProduct.offerPrice | null,
+        actualPrice: selectedProduct.actualPrice | null,
+        offerPercentage: selectedProduct.offerPercentage | null,
+        metaData: selectedProduct.metaData | null,
+        aboutItem: selectedProduct.aboutItem | null,
         id: selectedProduct._id.toString(),
       },
     },
