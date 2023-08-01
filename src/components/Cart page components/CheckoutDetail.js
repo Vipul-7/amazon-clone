@@ -7,11 +7,10 @@ import Button from "../Layouts/Button";
 import { useDispatch, useSelector } from "react-redux";
 import CheckoutForm from "./CheckoutForm";
 import { cartSliceActions } from "@/store/cart-slice";
-import { modalsActions } from "@/store/modals-slice";
 
 const CheckoutDetail = (props) => {
   const [showCheckoutForm, setShowCheckoutForm] = useState(false);
-  const [isSendingData, setIsSendingData] = useState(false);
+  const [isSendindData, setIsSendingData] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -51,11 +50,6 @@ const CheckoutDetail = (props) => {
       console.log(error);
     }
     setIsSendingData(false);
-
-    dispatch(modalsActions.orderPlaced());
-    setTimeout(() => {
-      dispatch(modalsActions.orderPlaced());
-    }, 4000);
   };
 
   return (
@@ -99,7 +93,7 @@ const CheckoutDetail = (props) => {
 
       {showCheckoutForm && (
         <section className={styles["checkout-form"]}>
-          <CheckoutForm onSubmit={checkoutHandler} isSending={isSendingData} />
+          <CheckoutForm onSubmit={checkoutHandler} isSending={isSendindData} />
         </section>
       )}
 
