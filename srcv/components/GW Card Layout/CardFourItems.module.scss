@@ -1,0 +1,32 @@
+.main {
+  background-color: #fff;
+}
+
+.show-up {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 1.2rem;
+
+  position: relative;
+  height: 29rem;
+  margin-bottom: 1rem;
+
+  section {
+    img {
+      width: 100%;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #0f1111;
+    }
+  }
+}
+
+// .bottom-text {
+//   h5 {
+//     font-weight: 400;
+//     font-size: 1.3rem;
+//     color: #007185;
+//   }
+// }

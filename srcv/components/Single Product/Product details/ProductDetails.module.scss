@@ -1,0 +1,173 @@
+.container1 {
+  padding-bottom: 1rem;
+  border-bottom: var(--border-for-product);
+
+  h1 {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+  }
+
+  .ratingInfo {
+    display: flex;
+    align-items: center;
+
+    &--text {
+      font-size: 1.4rem;
+      margin-right: 2px;
+    }
+
+    &--icons {
+      padding-right: 2px;
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: var(--dark-orange-color-for-hover-link);
+      }
+    }
+
+    &--rating-count {
+      padding: 0 1rem;
+    }
+
+    &--ans-count {
+      padding: 0 1rem;
+    }
+  }
+}
+
+.container2 {
+  padding: 1rem 0;
+  border-bottom: var(--border-for-product);
+
+  .offer-price {
+    line-height: normal;
+    &__percentage {
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: #cc0c39;
+      margin-right: 3px;
+    }
+
+    &__price {
+      font-size: 2.8rem;
+
+      &--rupee {
+        // display: flex;
+        align-items: flex-start;
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-right: 2px;
+        margin-bottom: -10px;
+      }
+    }
+  }
+
+  .actual-price {
+    color: #565659;
+    font-size: 1.2rem;
+
+    span {
+      margin-right: 3px;
+    }
+  }
+
+  .fullfilled-image {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    img {
+      width: 6.6rem;
+      height: 1.8rem;
+    }
+  }
+
+  p {
+    display: flex;
+    font-size: 1.4rem;
+
+    .s1 {
+      font-weight: 700;
+      margin-right: 3px;
+    }
+
+    .s2 {
+      margin-left: 3px;
+      color: #007185;
+    }
+
+    svg {
+      margin-left: 5px;
+      width: 1.4rem;
+      fill: #565659;
+    }
+  }
+}
+
+.container3 {
+  padding: 1rem 0;
+  border-bottom: var(--border-for-product);
+  position: relative;
+
+  .offerTitle {
+    display: flex;
+    align-items: center;
+
+    svg {
+      fill: var(--dark-orange-color-for-hover-link);
+    }
+
+    span {
+      margin-left: 1rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+  }
+
+  .offersSlider {
+    display: flex;
+  }
+}
+
+.container4 {
+  padding: 1rem 0;
+  border-bottom: var(--border-for-product);
+}
+
+.container5 {
+  padding: 1rem 0;
+  border-bottom: var(--border-for-product);
+
+  section {
+    font-size: 1.4rem;
+    padding: 3px;
+
+    display: flex;
+
+    .key {
+      font-weight: 700;
+      width: 26.18%;
+    }
+
+    .value {
+    }
+  }
+}
+
+.container6 {
+  padding-top: 1rem;
+
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 3.6rem;
+  }
+
+  ul {
+    font-size: 1.4rem;
+    padding-left: 1rem;
+
+    section{
+      padding-bottom: .8rem;
+    }
+  }
+}

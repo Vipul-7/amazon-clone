@@ -22,12 +22,6 @@ export const getStaticProps = async (context) => {
 
   const collections = await db.listCollections().toArray();
 
-  if (!collections) {
-    return {
-      notFound: true,
-    };
-  }
-
   // const data = [];
   let selectedProduct = {};
 
@@ -47,14 +41,14 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       productData: {
-        title: selectedProduct.title || null,
-        image: selectedProduct.image || null,
-        offerPrice: selectedProduct.offerPrice || null,
-        actualPrice: selectedProduct.actualPrice || null,
-        offerPercentage: selectedProduct.offerPercentage || null,
-        metaData: selectedProduct.metaData || null,
-        aboutItem: selectedProduct.aboutItem || null,
-        id: selectedProduct._id.toString() || null,
+        title: selectedProduct.title,
+        image: selectedProduct.image,
+        offerPrice: selectedProduct.offerPrice,
+        actualPrice: selectedProduct.actualPrice,
+        offerPercentage: selectedProduct.offerPercentage,
+        metaData: selectedProduct.metaData,
+        aboutItem: selectedProduct.aboutItem,
+        id: selectedProduct._id.toString(),
       },
     },
   };
@@ -68,13 +62,6 @@ export const getStaticPaths = async () => {
   const db = client.db();
 
   const collections = await db.listCollections().toArray();
-
-  if (!collections) {
-    return {
-      fallback: false,
-      paths: [],
-    };
-  }
 
   let paths = [];
 

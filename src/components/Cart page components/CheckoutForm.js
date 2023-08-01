@@ -110,11 +110,7 @@ const CheckoutForm = (props) => {
         Submit
       </button>
 
-      {props.isSending && (
-        <div className={styles["cart-loading"]}>
-          <img src="/images/loader.gif" alt="loader" />
-        </div>
-      )}
+      {props.isSending && <div>Loading...</div>}
     </form>
   );
 };

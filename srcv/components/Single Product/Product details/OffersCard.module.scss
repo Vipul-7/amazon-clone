@@ -1,0 +1,31 @@
+.main {
+  color: var(--text-color);
+  width: 26%;
+  letter-spacing: normal;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 0.7rem 1rem;
+  margin: 1rem 0.4rem;
+  cursor: pointer;
+
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  p {
+    font-size: 1.4rem;
+    margin-bottom: .8rem;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+
+    svg{
+      width: 1.5rem;
+      fill: var(--dark-orange-color-for-hover-link);
+      margin-left: 4px;
+    }
+  }
+}

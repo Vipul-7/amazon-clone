@@ -1,0 +1,18 @@
+.box-detail {
+    display: flex;
+    align-items: baseline;
+  
+    padding: 1.5rem 0;
+    h2 {
+      font-size: 2.1rem;
+      color: var(--text-color);
+      line-height: 2.73rem;
+    }
+  
+    p{
+      font-size: 1.4rem;
+      color: var(--link-color);
+  
+      margin-left: 1.5rem;
+    }
+  }

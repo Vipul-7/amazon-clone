@@ -1,0 +1,154 @@
+.main {
+  padding: 2rem;
+  border: var(--border-for-product);
+  border-radius: 1rem;
+
+  .offer-price {
+    line-height: normal;
+    &__percentage {
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: #cc0c39;
+      margin-right: 3px;
+    }
+
+    &__price {
+      font-size: 2.8rem;
+
+      &--rupee {
+        // display: flex;
+        align-items: flex-start;
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-right: 2px;
+        margin-bottom: -10px;
+      }
+    }
+  }
+
+  .fullfilled-image {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    img {
+      width: 6.6rem;
+      height: 1.8rem;
+    }
+  }
+
+  .freeDel {
+    font-size: 1.4rem;
+
+    .one {
+      margin-left: 6px;
+      font-weight: 700;
+    }
+
+    p {
+      span {
+        font-weight: 400;
+        color: var(--link-color);
+      }
+    }
+  }
+
+  .address {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    color: var(--link-color);
+
+    padding: 0.5rem 0;
+    cursor: pointer;
+
+    svg {
+      fill: #000;
+      margin-right: 7px;
+      width: 1.6rem;
+    }
+
+    &:hover {
+      color: var(--dark-orange-color-for-hover-link);
+    }
+  }
+
+  .stockAvailability {
+    color: #007600;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 2.4rem;
+    padding-bottom: 3px;
+  }
+
+  .seller {
+    display: inline;
+    font-size: 1.4rem;
+
+    span {
+      color: var(--link-color);
+      cursor: pointer;
+
+      &:hover {
+        color: var(--dark-orange-color-for-hover-link);
+      }
+    }
+  }
+
+  .warranty {
+    font-size: 1.4rem;
+    line-height: 2rem;
+
+    p {
+      font-weight: 700;
+      margin-top: 3px;
+      margin-bottom: 2px;
+    }
+
+    label {
+      color: var(--link-color);
+      margin-left: 5px;
+
+      span {
+        color: var(--dark-orange-color-for-hover-link);
+      }
+    }
+  }
+
+  .quantity {
+    padding: 0.8rem 0;
+    label {
+      font-size: 1.4rem;
+    }
+
+    select {
+      width: 4rem;
+      font-size: 1.4rem;
+      padding: 0.4rem;
+      margin-left: 5px;
+    }
+  }
+
+  .addToCart {
+    padding: 0.5rem 0;
+
+    button {
+      padding: 0.8rem;
+      border-radius: 5rem;
+    }
+  }
+
+  .buyNow {
+    padding: 0.5rem 0;
+    transition: all 0.3s ease-in-out;
+
+    button {
+      padding: 0.8rem;
+      background-color: #f4a453;
+      border-radius: 5rem;
+
+      &:hover {
+        background-color: #f08010;
+      }
+    }
+  }
+}

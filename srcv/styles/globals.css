@@ -1,0 +1,47 @@
+:root {
+  --nav-belt-background: #131921;
+  --text-color: #0f1111;
+  --link-color: #007185;
+
+  --border-for-hover: 1.3px solid #fff;
+  --border-radius-for-hover: 2px;
+
+  --button-backgrond-yellow-orange-color: rgb(255, 213, 0);
+
+  --border-for-Cart: 1px solid #d7d5d5;
+  --border-for-product: 1px solid #a39f9f;
+
+  --light-orange-color-for-rating: #e59f1c;
+  --dark-orange-color-for-hover-link: #c7511f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  background-color: #dedcdc;
+}
+
+body {
+  position: relative;
+  @font-face {
+    font-family: "Amazon";
+    src: url("/fonts/AmazonEmber-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+  color: #1b1d1d;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  line-height: 2rem;
+}
