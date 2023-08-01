@@ -22,6 +22,12 @@ export const getStaticProps = async (context) => {
 
   const collections = await db.listCollections().toArray();
 
+  if (!collections) {
+    return {
+      notFound: true,
+    };
+  }
+
   // const data = [];
   let selectedProduct = {};
 
@@ -62,6 +68,13 @@ export const getStaticPaths = async () => {
   const db = client.db();
 
   const collections = await db.listCollections().toArray();
+
+  if (!collections) {
+    return {
+      fallback: false,
+      paths: [],
+    };
+  }
 
   let paths = [];
 
