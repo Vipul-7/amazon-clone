@@ -106,7 +106,7 @@ const ProductDetails = (props) => {
       <div className={styles.container6}>
         <h3>About this item</h3>
         <ul>
-          {props.aboutItem && props.aboutItem.map((item, index) => (
+          {props.aboutItem.map((item, index) => (
             <section key={index}>
               <li>{item}</li>
             </section>
