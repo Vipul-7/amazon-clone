@@ -39,7 +39,7 @@ const ProductMain = (props) => {
       <div className={styles.actions}>
         <ProductActions
           price={props.productData.offerPrice}
-          brandName={props.productData.metaData.Brand}
+          // brandName={props.productData.metaData.}
           onClick={addToCartHandler}
         />
       </div>
