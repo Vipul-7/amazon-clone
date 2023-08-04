@@ -95,18 +95,19 @@ const ProductDetails = (props) => {
 
       <div className={styles.container5}>
         {/* Object.keys returns an array of keys */}
-        {Object.keys(props.metaData).map((key) => (
-          <section key={key}>
-            <p className={styles.key}>{key}</p>
-            <p className={styles.value}>{props.metaData[key]}</p>
-          </section>
-        ))}
+        {props.metaData &&
+          Object.keys(props.metaData).map((key) => (
+            <section key={key}>
+              <p className={styles.key}>{key}</p>
+              <p className={styles.value}>{props.metaData[key]}</p>
+            </section>
+          ))}
       </div>
 
       <div className={styles.container6}>
         <h3>About this item</h3>
         <ul>
-          {props.aboutItem.map((item, index) => (
+          {props.aboutItem && props.aboutItem.map((item, index) => (
             <section key={index}>
               <li>{item}</li>
             </section>
