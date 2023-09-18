@@ -8,7 +8,7 @@ const AmazonLogo = () => {
       width="2500"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-rule="evenodd" fill-rule="evenodd">
+      <g clipRule="evenodd" fillRule="evenodd">
         <path
           d="m340.3 330.2c-16.5 12.2-40.5 18.7-61.2 18.7-29 0-55-10.7-74.8-28.5-1.5-1.4-.2-3.3 1.7-2.2 21.3 12.4 47.6 19.8 74.8 19.8 18.3 0 38.5-3.8 57.1-11.7 2.8-1.1 5.1 1.9 2.4 3.9z"
           fill="#f90"

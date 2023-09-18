@@ -8,7 +8,8 @@ import RightArrowIcon from "../Icons/RightArrowIcon";
 import styles from "./ProductCard.module.scss";
 
 const ProductCard = (props) => {
-  const productId = `${props.id}`;
+  const productId = `${props.categoryName}/${props.id}`;
+
   return (
     <div className={styles.main}>
       <Link href={productId}>

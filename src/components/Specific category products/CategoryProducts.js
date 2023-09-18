@@ -22,6 +22,7 @@ const CategoryProducts = (props) => {
               <ProductCard
                 key={product.id}
                 id={product.id}
+                categoryName = {props.categoryName}
                 image={product.image}
                 title={product.title}
                 offerPrice={product.offerPrice}

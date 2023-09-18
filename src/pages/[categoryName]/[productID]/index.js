@@ -13,7 +13,7 @@ export default ProductPage;
 
 export const getStaticProps = async (context) => {
   const productId = context.params.productID;
-
+  
   const client = await MongoClient.connect(
     process.env.MONGODB_CONNECTION_STRING
   );
@@ -85,7 +85,12 @@ export const getStaticPaths = async () => {
       .toArray();
 
     for (const product of data) {
-      paths.push({ params: { productID: product._id.toString() } });
+      paths.push({
+        params: {
+          categoryName: 'watches', // Replace 'watches' with the actual value for the first dynamic route
+          productID: product._id.toString(),
+        },
+      });
     }
   }
 

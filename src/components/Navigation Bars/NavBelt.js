@@ -76,7 +76,7 @@ const NavBelt = () => {
           <span className={styles["nav-right__orders-child"]}>& Orders</span>
         </section>
 
-        <Link href="cart" className={styles["nav-right__cart"]}>
+        <Link href="/cart" className={styles["nav-right__cart"]}>
           <div className={styles["nav-right__cart-detail"]}>
             <span className={styles["nav-right__cart-detail-number"]}>
               {totalQuantity}
