@@ -51,7 +51,7 @@ export const getStaticProps = async (context) => {
 export const getStaticPaths = async () => {
   const paths = [];
   paths.push({ params: { categoryName: "watches" } });
-  // paths.push({ params: { categoryName: "smart-phones" } });
+  paths.push({ params: { categoryName: "smart-phones" } });
 
   return {
     fallback: false,

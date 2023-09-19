@@ -31,25 +31,23 @@ const productSchema = new Schema({
       type: String,
     },
   ],
-  metaData: [
-    {
-      brand: {
-        type: String,
-      },
-      modelName: {
-        type: String,
-      },
-      colour: {
-        type: String,
-      },
-      style: {
-        type: String,
-      },
-      ScreenSize: {
-        type: String,
-      },
+  metaData: {
+    brand: {
+      type: String,
     },
-  ],
+    modelName: {
+      type: String,
+    },
+    colour: {
+      type: String,
+    },
+    style: {
+      type: String,
+    },
+    ScreenSize: {
+      type: String,
+    },
+  },
 });
 
 const Product =

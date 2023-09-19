@@ -1,5 +1,6 @@
 import ProductMain from "@/components/Single Product/ProductMain";
-import { MongoClient } from "mongodb";
+import { connectToDatabase } from "@/database/mongoose";
+import Product from "@/models/product";
 
 const ProductPage = ({ productData }) => {
   return (
@@ -13,88 +14,66 @@ export default ProductPage;
 
 export const getStaticProps = async (context) => {
   const productId = context.params.productID;
-  
-  const client = await MongoClient.connect(
-    process.env.MONGODB_CONNECTION_STRING
-  );
 
-  const db = client.db();
+  const connect = await connectToDatabase();
 
-  const collections = await db.listCollections().toArray();
-
-  if (!collections) {
-    return {
-      notFound: true,
-    };
+  if (!connect) {
+    const error = new Error("Database connection failed!");
+    error.statusCode = 500;
+    throw error;
   }
 
-  // const data = [];
-  let selectedProduct = {};
+  const product = await Product.findById(productId); // returns a single product
 
-  for (const collection of collections) {
-    const data = await db.collection(collection.name).find({}).toArray();
-
-    for (const product of data) {
-      if (product._id.toString() === productId) {
-        selectedProduct = product;
-        break;
-      }
-    }
+  if (!product) {
+    const error = new Error("No product found!");
+    error.statusCode = 404;
+    throw error;
   }
-
-  client.close();
 
   return {
     props: {
       productData: {
-        title: selectedProduct.title || null,
-        image: selectedProduct.image || null,
-        offerPrice: selectedProduct.offerPrice || null,
-        actualPrice: selectedProduct.actualPrice || null,
-        offerPercentage: selectedProduct.offerPercentage || null,
-        metaData: selectedProduct.metaData || null,
-        aboutItem: selectedProduct.aboutItem || null,
-        id: selectedProduct._id.toString() || null,
+        title: product.title,
+        image: product.image,
+        offerPrice: product.offerPrice,
+        actualPrice: product.actualPrice,
+        offerPercentage: product.offerPercentage,
+        metaData: JSON.stringify(product.metaData), // serialize the metaData object
+        aboutItem: product.aboutItem,
+        id: product._id.toString(),
       },
     },
   };
 };
 
 export const getStaticPaths = async () => {
-  const client = await MongoClient.connect(
-    process.env.MONGODB_CONNECTION_STRING
-  );
+  const connect = await connectToDatabase();
 
-  const db = client.db();
-
-  const collections = await db.listCollections().toArray();
-
-  if (!collections) {
-    return {
-      fallback: false,
-      paths: [],
-    };
+  if (!connect) {
+    const error = new Error("Database connection failed!");
+    error.statusCode = 500;
+    throw error;
   }
 
-  let paths = [];
+  const products = await Product.find();
 
-  for (const collection of collections) {
-    const data = await db
-      .collection(collection.name)
-      .find({}, { _id: 1 })
-      .toArray();
-
-    for (const product of data) {
-      paths.push({
-        params: {
-          categoryName: 'watches', // Replace 'watches' with the actual value for the first dynamic route
-          productID: product._id.toString(),
-        },
-      });
-    }
+  if (!products) {
+    const error = new Error("No products found!");
+    error.statusCode = 404;
+    throw error;
   }
 
-  client.close();
+  const paths = [];
+
+  for (const product of products) {
+    paths.push({
+      params: {
+        categoryName: product.category,
+        productID: product._id.toString(),
+      },
+    });
+  }
 
   return {
     fallback: false,

@@ -95,23 +95,23 @@ const ProductDetails = (props) => {
 
       <div className={styles.container5}>
         {/* Object.keys returns an array of keys */}
-        {props.metaData &&
-          Object.keys(props.metaData).map((key) => (
-            <section key={key}>
-              <p className={styles.key}>{key}</p>
-              <p className={styles.value}>{props.metaData[key]}</p>
-            </section>
-          ))}
+        {Object.entries(JSON.parse(props.metaData)).map(([key, value]) => (
+          <section key={key}>
+            <p className={styles.key}>{key}</p>
+            <p className={styles.value}>{value}</p>
+          </section>
+        ))}
       </div>
 
       <div className={styles.container6}>
         <h3>About this item</h3>
         <ul>
-          {props.aboutItem && props.aboutItem.map((item, index) => (
-            <section key={index}>
-              <li>{item}</li>
-            </section>
-          ))}
+          {props.aboutItem &&
+            props.aboutItem.map((item, index) => (
+              <section key={index}>
+                <li>{item}</li>
+              </section>
+            ))}
         </ul>
       </div>
     </main>
