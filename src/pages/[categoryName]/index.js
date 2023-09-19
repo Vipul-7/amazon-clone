@@ -1,5 +1,6 @@
-import { MongoClient } from "mongodb";
 import CategoryProducts from "@/components/Specific category products/CategoryProducts";
+import { connectToDatabase } from "@/database/mongoose";
+import Product from "@/models/product";
 
 const CategoryPage = (props) => {
   return (
@@ -15,21 +16,25 @@ const CategoryPage = (props) => {
 export const getStaticProps = async (context) => {
   const categoryName = context.params.categoryName;
 
-  const client = await MongoClient.connect(
-    process.env.MONGODB_CONNECTION_STRING
-  );
+  const connect = await connectToDatabase();
 
-  const db = client.db();
+  if (!connect) {
+    const error = new Error("Database connection failed!");
+    error.statusCode = 500;
+    throw error;
+  }
 
-  const categoryCollection = db.collection(categoryName);
+  const products = await Product.find({ category: categoryName }); // returns an array of products
 
-  const categoryProducts = await categoryCollection.find().toArray();
-
-  client.close();
+  if (!products) {
+    const error = new Error("No products found!");
+    error.statusCode = 404;
+    throw error;
+  }
 
   return {
     props: {
-      categoryProducts: categoryProducts.map((product) => ({
+      categoryProducts: products.map((product) => ({
         title: product.title,
         image: product.image,
         offerPrice: product.offerPrice,
@@ -46,6 +51,7 @@ export const getStaticProps = async (context) => {
 export const getStaticPaths = async () => {
   const paths = [];
   paths.push({ params: { categoryName: "watches" } });
+  paths.push({ params: { categoryName: "smart-phones" } });
 
   return {
     fallback: false,
