@@ -49,11 +49,17 @@ const SignupForm = (props) => {
     formik.errors.password ||
     formik.errors.confirmPassword;
 
+  const onRedirect = () => {
+    props.onRedirect();
+  };
+
   return (
     <div className={styles.signupForm}>
       <h1 className={styles.title}>Create Account</h1>
 
-      {props.errorMessage && <h5 className={styles.serverError}>{props.errorMessage}</h5>}
+      {props.errorMessage && (
+        <h5 className={styles.serverError}>{props.errorMessage}</h5>
+      )}
 
       <form onSubmit={formik.handleSubmit}>
         <div className={styles.input}>
@@ -120,6 +126,13 @@ const SignupForm = (props) => {
           ) : null}
         </div>
 
+        <div className={styles.terms}>
+          <p>
+            By creating an account, you agree to Amazon&apos;s Conditions of Use and
+            Privacy Notice.
+          </p>
+        </div>
+
         <button
           className={styles.button}
           type="submit"
@@ -127,6 +140,13 @@ const SignupForm = (props) => {
         >
           Submit
         </button>
+
+        <div className={styles.redirect}>
+          <p>
+            Already have an account?{" "}
+            <span onClick={props.onRedirect}>Login</span>
+          </p>
+        </div>
       </form>
     </div>
   );

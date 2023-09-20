@@ -32,11 +32,17 @@ const LoginForm = (props) => {
 
   const isNotValid = formik.errors.email || formik.errors.password;
 
+  const onRedirect = () => {
+    props.onRedirect();
+  };
+
   return (
     <div className={styles.signupForm}>
       <h1 className={styles.title}>Login</h1>
 
-      {props.errorMessage && <h5 className={styles.serverError}>{props.errorMessage}</h5>}
+      {props.errorMessage && (
+        <h5 className={styles.serverError}>{props.errorMessage}</h5>
+      )}
 
       <form onSubmit={formik.handleSubmit}>
         <div className={styles.input}>
@@ -50,7 +56,7 @@ const LoginForm = (props) => {
             value={formik.values.email}
           />
           {formik.touched.email && formik.errors.email ? (
-            <div className={styles.validationError}>{formik.validationError.email}</div>
+            <div className={styles.validationError}>{formik.errors.email}</div>
           ) : null}
         </div>
 
@@ -65,7 +71,9 @@ const LoginForm = (props) => {
             value={formik.values.password}
           />
           {formik.touched.password && formik.errors.password ? (
-            <div className={styles.validationError}>{formik.errors.password}</div>
+            <div className={styles.validationError}>
+              {formik.errors.password}
+            </div>
           ) : null}
         </div>
 
@@ -76,6 +84,12 @@ const LoginForm = (props) => {
         >
           Submit
         </button>
+
+        <div className={styles.redirect}>
+          <p>
+            New User? <span onClick={props.onRedirect}>Create an Account</span>
+          </p>
+        </div>
       </form>
     </div>
   );

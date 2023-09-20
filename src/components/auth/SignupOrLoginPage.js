@@ -86,6 +86,7 @@ const SignupOrLoginPage = (props) => {
           onSubmit={signupFormSubmitHandler}
           isSending={isSendingData}
           errorMessage={signupError}
+          onRedirect={() => router.replace("/auth/login")}
         />
       )}
 
@@ -94,6 +95,7 @@ const SignupOrLoginPage = (props) => {
           onSubmit={loginFormSubmitHandler}
           isSending={isSendingData}
           errorMessage={loginError}
+          onRedirect={() => router.replace("/auth/signup")}
         />
       )}
     </main>
