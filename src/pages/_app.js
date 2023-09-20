@@ -4,13 +4,15 @@ import store from "@/store";
 import FixedLayoutHeaders from "@/components/Layouts/FixedLayoutHeaders";
 
 import { useEffect } from "react";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+
   NProgress.configure({ showSpinner: false });
-  
+
   useEffect(() => {
     const handleRouteChangeStart = (url) => {
       NProgress.start();
@@ -31,13 +33,19 @@ export default function App({ Component, pageProps }) {
     };
   }, []);
 
+  const routesWithoutHeader = ["/auth/login", "/auth/signup"];
+  const shouldShowHeader = !routesWithoutHeader.includes(router.pathname);
+
   return (
     <Provider store={store}>
       {/* <NProgress color="#29D" height={3} /> */}
-      <FixedLayoutHeaders>
-        {" "}
+      {shouldShowHeader ? (
+        <FixedLayoutHeaders>
+          <Component {...pageProps} />
+        </FixedLayoutHeaders>
+      ) : (
         <Component {...pageProps} />
-      </FixedLayoutHeaders>
+      )}
     </Provider>
   );
 }

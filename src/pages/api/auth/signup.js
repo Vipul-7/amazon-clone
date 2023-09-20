@@ -9,7 +9,7 @@ const postSignup = async (req, res) => {
   const password = req.body.password;
 
   try {
-    // const connect = await connectToDatabase();
+    const connect = await connectToDatabase();
 
     if (!connect) {
       const error = new Error("Database connection failed!");
@@ -26,7 +26,8 @@ const postSignup = async (req, res) => {
       throw error;
     }
 
-    const hashedPassword = await bcrypt.hash(password, 32);
+    const hashedPassword = await bcrypt.hash(password, 12);
+
     const newUser = new User({
       firstName,
       email,
@@ -36,6 +37,7 @@ const postSignup = async (req, res) => {
     const result = await newUser.save();
     res.status(201).json({ message: "User created", userId: result._id });
   } catch (error) {
+    console.log(error);
     error.statusCode = error.statusCode || 500;
     res.status(error.statusCode).json({ message: error.message });
   }

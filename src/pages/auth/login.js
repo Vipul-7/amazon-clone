@@ -1,15 +1,15 @@
 import SignupOrLoginPage from "@/components/auth/SignupOrLoginPage";
 import Head from "next/head";
 
-const Signup = () => {
+const Login = () => {
   return (
     <>
       <Head>
-        <title>Create Account | Amazon</title>
+        <title>Login | Amazon</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SignupOrLoginPage signup={true} login={false} />
+      <SignupOrLoginPage signup={false} login={true} />
     </>
   );
 };
-export default Signup;
+export default Login;

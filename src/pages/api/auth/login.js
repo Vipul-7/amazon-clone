@@ -3,14 +3,13 @@ const jwt = require("jsonwebtoken");
 
 import { connectToDatabase } from "@/database/mongoose";
 import User from "@/models/user";
-import { use } from "react";
 
 const postLogin = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
   try {
-    // const connect = await connectToDatabase();
+    const connect = await connectToDatabase();
 
     if (!connect) {
       const error = new Error("Database connection failed!");
