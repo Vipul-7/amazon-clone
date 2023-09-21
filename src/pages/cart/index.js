@@ -7,6 +7,7 @@ const cart = () => {
     <div>
       <Head>
         <title>My Cart</title>
+        <link rel="icon" href="/amazon.png" />
       </Head>
       <CartPageComponents />
     </div>

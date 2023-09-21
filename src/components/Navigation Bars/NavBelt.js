@@ -60,15 +60,25 @@ const NavBelt = () => {
         </section>
 
         <section className={styles["nav-right__signIn-main"]}>
-          <div className={styles["nav-right__signIn"]}>
-            <span className={styles["nav-right__signIn-text1"]}>
-              Hello, sign in
-            </span>
-            <span className={styles["nav-right__signIn-text2"]}>
-              Account & Lists
-            </span>
+          <div className={styles["nav-right__signIn-main-navText"]}>
+            {/* <Link href="/auth/login" className={styles["nav-right__signIn-main"]}> */}
+            <div className={styles["nav-right__signIn"]}>
+              <span className={styles["nav-right__signIn-text1"]}>
+                Hello, sign in
+              </span>
+              <span className={styles["nav-right__signIn-text2"]}>
+                Account & Lists
+              </span>
+            </div>
+            <DrowDownIcon />
           </div>
-          <DrowDownIcon />
+          <div className={styles.toolTip}>
+            <div className={styles.links}>
+              <Link href="/auth/login">Login</Link>
+              <Link href="/auth/signup">Signup</Link>
+            </div>
+          </div>
+          {/* </Link> */}
         </section>
 
         <section className={styles["nav-right__orders"]}>

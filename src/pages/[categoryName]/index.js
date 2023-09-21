@@ -1,15 +1,22 @@
 import CategoryProducts from "@/components/Specific category products/CategoryProducts";
 import { connectToDatabase } from "@/database/mongoose";
 import Product from "@/models/product";
+import Head from "next/head";
 
 const CategoryPage = (props) => {
   return (
-    <div>
-      <CategoryProducts
-        products={props.categoryProducts}
-        categoryName={props.categoryName}
-      />
-    </div>
+    <>
+      <Head>
+        <title>{props.categoryName}</title>
+        <link rel="icon" href="/amazon.png" />
+      </Head>
+      <div>
+        <CategoryProducts
+          products={props.categoryProducts}
+          categoryName={props.categoryName}
+        />
+      </div>
+    </>
   );
 };
 

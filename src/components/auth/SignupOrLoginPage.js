@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import AmazonLogo from "../Icons/AmazonLogo";
 import SignupForm from "./SignupForm";
 import LoginForm from "./LoginForm";
+import { authSliceActions } from "@/store/auth-slice";
 
 import styles from "./SignupOrLoginPage.module.scss";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 
 const SignupOrLoginPage = (props) => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [isSendingData, setIsSendingData] = useState(false);
   const [signupError, setSignupError] = useState(null);
@@ -66,6 +69,15 @@ const SignupOrLoginPage = (props) => {
         setLoginError(errorData.message);
         throw new Error("Something went wrong!");
       }
+
+      const responseData = await response.json();
+      localStorage.setItem("token", responseData.token);
+      dispatch(
+        authSliceActions.setToken({
+          token: responseData.token,
+          userId: responseData.userId,
+        })
+      );
 
       router.replace("/");
     } catch (error) {

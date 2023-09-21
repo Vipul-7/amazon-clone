@@ -66,7 +66,11 @@ const ProductActions = (props) => {
       </section>
 
       <section className={styles.addToCart}>
-        <YellowButton text="Add to Cart" onClick={addToCartHandler} />
+        {props.isError && <h3>{props.error.message}</h3>}
+        {props.isLoading && <p>Loading...</p>}
+        {!props.isLoading && (
+          <YellowButton text="Add to Cart" onClick={addToCartHandler} />
+        )}
       </section>
       <section className={styles.buyNow}>
         <YellowButton text="Buy Now" />

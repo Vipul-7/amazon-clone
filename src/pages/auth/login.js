@@ -6,7 +6,7 @@ const Login = () => {
     <>
       <Head>
         <title>Login | Amazon</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/amazon.png" />
       </Head>
       <SignupOrLoginPage signup={false} login={true} />
     </>

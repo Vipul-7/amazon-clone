@@ -42,7 +42,9 @@ const postLogin = async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ message: "User logged in", userId: user._id });
+    res
+      .status(200)
+      .json({ message: "User logged in", token, userId: user._id });
   } catch (error) {
     error.statusCode = error.statusCode || 500;
     res.status(error.statusCode).json({ message: error.message });

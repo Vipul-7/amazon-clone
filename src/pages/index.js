@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Amazon.in</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Shopping | Amazon</title>
+        <link rel="icon" href="/amazon.png" />
       </Head>
       <ImageSliders />
       <GWCardLayout />

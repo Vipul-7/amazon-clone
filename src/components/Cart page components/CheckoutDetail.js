@@ -15,10 +15,6 @@ const CheckoutDetail = (props) => {
 
   const dispatch = useDispatch();
 
-  const items = useSelector((state) => state.cart.items);
-  const TotalItemsCount = useSelector((state) => state.cart.totalQuantity);
-  const subTotal = useSelector((state) => state.cart.subTotal);
-
   const showCheckoutFormHandler = () => {
     setShowCheckoutForm(true);
   };
@@ -76,7 +72,7 @@ const CheckoutDetail = (props) => {
       <section className={styles["second-division"]}>
         <div className={styles.subTotal}>
           <span className={styles["subTotal__text"]}>
-            Subtotal ({TotalItemsCount} items):
+            Subtotal ({props.totalQuantity} items):
           </span>
           <span className={styles["subTotal__amount"]}>
             <span
@@ -88,7 +84,7 @@ const CheckoutDetail = (props) => {
             >
               ₹
             </span>
-            {subTotal}
+            {props.subTotal}
           </span>
         </div>
         <div className={styles.gift}>

@@ -1,24 +1,30 @@
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import ProductDetails from "./Product details/ProductDetails";
 import ProductVisuals from "./Product Visual/ProductVisuals";
 import ProductActions from "./Product Actions/ProductActions";
-import { cartSliceActions } from "@/store/cart-slice";
 import styles from "./ProductMain.module.scss";
+import { useMutation } from "@tanstack/react-query";
+import { addToCart, queryClient } from "@/util/http";
 
 const ProductMain = (props) => {
-  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+
+  const { mutate, isLoading, isError, error } = useMutation({
+    mutationFn: addToCart,
+    onSuccess: () => {
+      queryClient.invalidateQueries("cart");
+    },
+  });
 
   const addToCartHandler = (quantity) => {
-    dispatch(
-      cartSliceActions.addToCart({
-        id: props.productData.id,
-        title: props.productData.title,
+    mutate({
+      cartData: {
+        productId: props.productData.id,
+        quantity,
         price: props.productData.offerPrice,
-        image: props.productData.image,
-        quantity: quantity,
-        colour: "black",
-      })
-    );
+      },
+      Token: localStorage.getItem("token"),
+    });
   };
 
   return (
@@ -41,6 +47,9 @@ const ProductMain = (props) => {
           price={props.productData.offerPrice}
           // brandName={props.productData.metaData.}
           onClick={addToCartHandler}
+          isLoading={isLoading}
+          isError={isError}
+          error={error}
         />
       </div>
     </main>

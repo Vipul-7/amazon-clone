@@ -1,12 +1,19 @@
 import ProductMain from "@/components/Single Product/ProductMain";
 import { connectToDatabase } from "@/database/mongoose";
 import Product from "@/models/product";
+import Head from "next/head";
 
 const ProductPage = ({ productData }) => {
   return (
-    <div style={{ backgroundColor: "#fff" }}>
-      <ProductMain productData={productData} />
-    </div>
+    <>
+      <Head>
+        <title>{productData.title}</title>
+        <link rel="icon" href="/amazon.png" />
+      </Head>
+      <div style={{ backgroundColor: "#fff" }}>
+        <ProductMain productData={productData} />
+      </div>
+    </>
   );
 };
 

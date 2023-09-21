@@ -3,14 +3,8 @@ import styles from "./CartItems.module.scss";
 import Button from "../Layouts/Button";
 
 import CartItem from "./CartItem";
-import { useSelector } from "react-redux";
 
-const CartItems = () => {
-  const cartItems = useSelector((state) => state.cart.items);
-  const TotalItemsCount = useSelector((state) => state.cart.totalQuantity);
-  const subTotal = useSelector((state) => state.cart.subTotal);
-
-  
+const CartItems = (props) => {
   return (
     <div className={styles.main}>
       <section className={styles.header}>
@@ -19,19 +13,20 @@ const CartItems = () => {
         <p>Price</p>
       </section>
       <section>
-        {cartItems.map((item) => (
+        {props.cartData.items.map((item) => (
           <CartItem
-            key={item.id}
-            id={item.id}
-            image={item.image}
-            title={item.title}
-            colour={item.colour}
-            price={item.price}
+            key={item.productId._id}
+            id={item.productId._id}
+            image={item.productId.image}
+            title={item.productId.title}
+            colour={item.productId.colour}
+            price={item.productId.price}
+            quantity={item.quantity}
           />
         ))}
       </section>
       <section className={styles.subtotal}>
-        SubTotal ({TotalItemsCount} items):
+        SubTotal ({props.cartData.totalQuantity} items):
         <span>
           <span
             style={{
@@ -42,7 +37,7 @@ const CartItems = () => {
           >
             ₹
           </span>
-          {subTotal}
+          {props.cartData.subTotal}
         </span>{" "}
       </section>
     </div>
