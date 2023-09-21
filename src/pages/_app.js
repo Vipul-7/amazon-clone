@@ -37,20 +37,21 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     const checkTokenExpiry = () => {
-      const token = localStorage.getItem("jwtToken");
+      const token = localStorage.getItem("token");
+      console.log(token);
       if (token) {
-        const { exp } = jwtDecode(token); //
+        const { exp } = jwtDecode(token); // Decode the token to get its expiration time
 
-        const currentTimeInSeconds = Math.floor(Date.now() / 1000);
+        const currentTimeInSeconds = Math.floor(Date.now() / 1000); // Get current time in seconds
 
         const tokenExpirationInSeconds = exp;
 
         const remainingTimeInSeconds =
-          tokenExpirationInSeconds - currentTimeInSeconds;
+          tokenExpirationInSeconds - currentTimeInSeconds; // Remaining time in seconds
 
         if (remainingTimeInSeconds <= 0) {
           // Token has expired, log the user out
-          localStorage.removeItem("jwtToken");
+          localStorage.removeItem("token");
           // Redirect to the login page or perform any other logout actions
         }
       }

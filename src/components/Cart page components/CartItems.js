@@ -19,8 +19,8 @@ const CartItems = (props) => {
             id={item.productId._id}
             image={item.productId.image}
             title={item.productId.title}
-            colour={item.productId.colour}
-            price={item.productId.price}
+            // colour="black"
+            price={item.productId.offerPrice}
             quantity={item.quantity}
           />
         ))}

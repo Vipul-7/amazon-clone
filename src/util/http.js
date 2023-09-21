@@ -41,3 +41,45 @@ export const getCart = async ({ signal, Token }) => {
   const data = await response.json();
   return data.cart;
 };
+
+export const deleteItem = async ({ productId, Token }) => {
+  const response = await fetch("/api/cart/deleteItem", {
+    method: "DELETE",
+    body: JSON.stringify({ productId }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + Token,
+    },
+  });
+
+  if (!response.ok) {
+    const error = new Error("An error occurred while deleting item!");
+    error.code = response.status;
+    error.info = await response.json();
+    throw error;
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+export const updateItem = async ({ productId, Token, quantity }) => {
+  const response = await fetch("/api/cart/updateQuantity", {
+    method: "PATCH",
+    body: JSON.stringify({ productId, quantity }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + Token,
+    },
+  });
+
+  if (!response.ok) {
+    const error = new Error("An error occurred while updating item!");
+    error.code = response.status;
+    error.info = await response.json();
+    throw error;
+  }
+
+  const data = await response.json();
+  return data;
+};

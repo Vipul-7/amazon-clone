@@ -9,7 +9,6 @@ import { getCart } from "@/util/http";
 import { useSelector } from "react-redux";
 
 const CartPageComponents = () => {
-  // const Token = useSelector((state) => state.auth.token);
   const isOrderPlaced = useSelector((state) => state.modals.isOrderPlaced);
 
   const { data, isLoading, isError, error } = useQuery({

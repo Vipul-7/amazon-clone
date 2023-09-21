@@ -6,7 +6,7 @@ import ChevronDownIcon from "../Icons/ChevronDownIcon";
 import Button from "../Layouts/Button";
 import { useDispatch, useSelector } from "react-redux";
 import CheckoutForm from "./CheckoutForm";
-import { cartSliceActions } from "@/store/cart-slice";
+// import { cartSliceActions } from "@/store/cart-slice";
 import { modalsActions } from "@/store/modals-slice";
 
 const CheckoutDetail = (props) => {
@@ -42,7 +42,7 @@ const CheckoutDetail = (props) => {
       }
       // const data = await response.json();
 
-      dispatch(cartSliceActions.clearCart());
+      // dispatch(cartSliceActions.clearCart());
     } catch (error) {
       console.log(error);
     }

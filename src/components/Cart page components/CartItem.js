@@ -2,21 +2,47 @@ import Link from "next/link";
 import React from "react";
 import styles from "./CartItem.module.scss";
 import Button from "../Layouts/Button";
-import { useDispatch, useSelector } from "react-redux";
-import { cartSliceActions } from "@/store/cart-slice";
+import { useMutation } from "@tanstack/react-query";
+import { deleteItem, queryClient, updateItem } from "@/util/http";
 
 const CartItem = (props) => {
+  const {
+    mutate: deleteMutate,
+    isLoading: deleteIsLoading,
+    isError: deleteIsError,
+    error: deleteError,
+  } = useMutation({
+    mutationFn: deleteItem,
+    onSuccess: () => {
+      queryClient.invalidateQueries("cart");
+    },
+  });
+
+  const {
+    mutate: updateMutate,
+    isLoading: updateIsLoading,
+    isError: updateIsError,
+    error: updateError,
+  } = useMutation({
+    mutationFn: updateItem,
+    onSuccess: () => {
+      queryClient.invalidateQueries("cart");
+    },
+  });
+
   const deleteHandler = () => {
-    dispatch(cartSliceActions.removeFromCart(props.id));
+    deleteMutate({
+      Token: localStorage.getItem("token"),
+      productId: props.id,
+    });
   };
 
   const selectHandler = (e) => {
-    dispatch(
-      cartSliceActions.changesInQuantity({
-        id: props.id,
-        quantity: e.target.value,
-      })
-    );
+    updateMutate({
+      Token: localStorage.getItem("token"),
+      productId: props.id,
+      quantity: e.target.value,
+    });
   };
 
   return (
@@ -50,21 +76,27 @@ const CartItem = (props) => {
           <h5>Colour:</h5>
           <span>{props.colour}</span>
         </div>
+        {deleteIsError && <h3>{deleteError.message}</h3>}
+        {updateIsError && <h3>{updateError.message}</h3>}
+        {updateIsLoading && <p>Updating...</p>}
         <div className={styles.actions}>
-          <select
-            prefix="Qty:"
-            name="quantity"
-            id="quantity"
-            defaultValue={props.quantity}
-            onChange={selectHandler}
-          >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <Button text="Delete" onClick={deleteHandler} />
+          {!updateIsLoading && (
+            <select
+              prefix="Qty:"
+              name="quantity"
+              id="quantity"
+              defaultValue={props.quantity}
+              onChange={selectHandler}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          )}
+          {!deleteIsLoading && <Button text="Delete" onClick={deleteHandler} />}
+          {deleteIsLoading && <Button text="Deleting..." />}
           <Button text="Save for later" />
           <Button text="See more like this" />
           <Button text="Share" />
