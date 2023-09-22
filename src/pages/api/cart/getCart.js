@@ -1,4 +1,5 @@
 import verifyToken from "@/database/verifyToken";
+import Product from "@/models/product";
 
 const { default: User } = require("@/models/user");
 
@@ -25,7 +26,8 @@ const getCart = async (req, res) => {
 
     const user = await User.findById({ _id: userId }).populate(
       "cart.items.productId"
-    );
+    ); // Not working error "Schema hasn't been registered for model \"Product\".\nUse mongoose.model(name, schema)"
+    // to solve this error we need to import the model before using it
 
     if (!user) {
       const error = new Error("User not found");

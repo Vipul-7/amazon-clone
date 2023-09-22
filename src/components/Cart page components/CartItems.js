@@ -5,6 +5,7 @@ import Button from "../Layouts/Button";
 import CartItem from "./CartItem";
 
 const CartItems = (props) => {
+  console.log(props.cartData.items[0].quantity);
   return (
     <div className={styles.main}>
       <section className={styles.header}>

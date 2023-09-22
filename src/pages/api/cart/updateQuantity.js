@@ -60,7 +60,11 @@ const updateQuantity = async (req, res) => {
 
     await user.save();
 
-    res.status(200).json({ message: "Quantity updated", productId });
+    res.status(200).json({
+      message: "Quantity updated",
+      productId,
+      updatedQuantity: quantity,
+    });
   } catch (err) {
     err.statusCode = err.statusCode || 500;
     res.status(err.statusCode).json({ messge: err.messge });

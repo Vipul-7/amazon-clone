@@ -1,11 +1,13 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./CartItem.module.scss";
 import Button from "../Layouts/Button";
 import { useMutation } from "@tanstack/react-query";
 import { deleteItem, queryClient, updateItem } from "@/util/http";
 
 const CartItem = (props) => {
+  const [quantity, setQuantity] = React.useState(props.quantity);
+
   const {
     mutate: deleteMutate,
     isLoading: deleteIsLoading,
@@ -20,15 +22,19 @@ const CartItem = (props) => {
 
   const {
     mutate: updateMutate,
+    data: updateData,
     isLoading: updateIsLoading,
     isError: updateIsError,
     error: updateError,
   } = useMutation({
     mutationFn: updateItem,
-    onSuccess: () => {
+    onSuccess: (data) => {
+      // data is the response from the server
+      setQuantity(data.updatedQuantity);
       queryClient.invalidateQueries("cart");
     },
   });
+  console.log(updateData && updateData.updateQuantity);
 
   const deleteHandler = () => {
     deleteMutate({
@@ -85,7 +91,7 @@ const CartItem = (props) => {
               prefix="Qty:"
               name="quantity"
               id="quantity"
-              defaultValue={props.quantity}
+              defaultValue={quantity}
               onChange={selectHandler}
             >
               <option value="1">1</option>
