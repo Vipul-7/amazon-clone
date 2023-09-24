@@ -1,14 +1,31 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./ProductActions.module.scss";
 import Button from "@/components/Layouts/Button";
 import LocationIcon from "@/components/Icons/LocationIcon";
 import YellowButton from "@/components/Layouts/YellowButton";
+import isValidTokenExpiry from "@/util/isValidTokenExpiry";
+import { useRouter } from "next/router";
 
 const ProductActions = (props) => {
+  const router = useRouter();
+  const [buyNowClick, setBuyNowClick] = useState(false);
+  const [isTokenValid, setIsTokenValid] = useState(false);
   const quantityInput = useRef();
 
+  useEffect(() => {
+    if (isValidTokenExpiry(localStorage.getItem("token"))) {
+      setIsTokenValid(true);
+    } else {
+      setIsTokenValid(false);
+    }
+  }, [isTokenValid]);
+
   const addToCartHandler = () => {
-    props.onClick(quantityInput.current.value);
+    if (isTokenValid) {
+      props.onClick(quantityInput.current.value);
+    } else {
+      router.push("/auth/login");
+    }
   };
 
   return (
@@ -73,7 +90,12 @@ const ProductActions = (props) => {
         )}
       </section>
       <section className={styles.buyNow}>
-        <YellowButton text="Buy Now" />
+        {buyNowClick && (
+          <p>Buy now is not working. Please try to buy with addToCart</p>
+        )}
+        {!buyNowClick && (
+          <YellowButton text="Buy Now" onClick={() => setBuyNowClick(true)} />
+        )}
       </section>
     </main>
   );

@@ -128,18 +128,21 @@ const SignupForm = (props) => {
 
         <div className={styles.terms}>
           <p>
-            By creating an account, you agree to Amazon&apos;s Conditions of Use and
-            Privacy Notice.
+            By creating an account, you agree to Amazon&apos;s Conditions of Use
+            and Privacy Notice.
           </p>
         </div>
 
-        <button
-          className={styles.button}
-          type="submit"
-          disabled={isNotValid || props.isSending}
-        >
-          Submit
-        </button>
+        {!isSending && (
+          <button
+            className={styles.button}
+            type="submit"
+            disabled={isNotValid || props.isSending}
+          >
+            Submit
+          </button>
+        )}
+        {isSending && <p>Loading...</p>}
 
         <div className={styles.redirect}>
           <p>

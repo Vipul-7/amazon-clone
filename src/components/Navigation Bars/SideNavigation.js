@@ -9,6 +9,7 @@ import WithArrowText from "./Side Navigation/WithArrowText";
 import CloseIcon from "../Icons/CloseIcon";
 
 const SideNavigation = () => {
+  const userName = useSelector((state) => state.auth.userName);
   const dispatch = useDispatch();
 
   const showSideNavigationBar = useSelector(
@@ -23,14 +24,17 @@ const SideNavigation = () => {
     <>
       {showSideNavigationBar && (
         <main className={styles.main}>
-          <button className={styles["main-close"]} onClick={hideSideNavigationBar}>
+          <button
+            className={styles["main-close"]}
+            onClick={hideSideNavigationBar}
+          >
             <CloseIcon />
           </button>
 
           <SideNavigationModal onClose={hideSideNavigationBar}>
             <div className={styles.top}>
               <ProfileIcon />
-              <span>Hello, sign in</span>
+              <span>Hello, {userName ? userName : "Sign in"}</span>
             </div>
             <div className={styles.nav}>
               <section className={styles["nav-first"]}>

@@ -4,7 +4,6 @@ import store from "@/store";
 import FixedLayoutHeaders from "@/components/Layouts/FixedLayoutHeaders";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/util/http";
-import { authSliceActions } from "@/store/auth-slice";
 
 import { useEffect } from "react";
 import Router, { useRouter } from "next/router";
@@ -13,7 +12,6 @@ import "nprogress/nprogress.css";
 const jwt = require("jsonwebtoken");
 
 export default function App({ Component, pageProps }) {
-  // const dispatch = useDispatch();
   const router = useRouter();
 
   NProgress.configure({ showSpinner: false });

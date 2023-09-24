@@ -37,6 +37,7 @@ const postLogin = async (req, res) => {
       {
         email: user.email,
         userId: user._id,
+        userName: user.firstName,
       },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
@@ -44,7 +45,12 @@ const postLogin = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "User logged in", token, userId: user._id });
+      .json({
+        message: "User logged in",
+        token,
+        userId: user._id,
+        userName: user.firstName,
+      });
   } catch (error) {
     error.statusCode = error.statusCode || 500;
     res.status(error.statusCode).json({ message: error.message });

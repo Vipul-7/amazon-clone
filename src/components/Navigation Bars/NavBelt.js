@@ -6,9 +6,51 @@ import SearchIcon from "../Icons/SearchIcon";
 import DrowDownIcon from "../Icons/DrowDownIcon";
 import CartMain from "../Icons/CartMain";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import isValidTokenExpiry from "@/util/isValidTokenExpiry";
+import { authSliceActions } from "@/store/auth-slice";
+import { useEffect, useState } from "react";
 
 const NavBelt = () => {
   // const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const userName = useSelector((state) => state.auth.userName);
+  const [isTokenValid, setIsTokenValid] = useState(false);
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    localStorage.removeItem("token");
+    setIsTokenValid(false);
+    dispatch(authSliceActions.clearToken());
+  };
+
+  useEffect(() => {
+    if (isValidTokenExpiry(localStorage.getItem("token"))) {
+      setIsTokenValid(true);
+    } else {
+      setIsTokenValid(false);
+    }
+  }, [isTokenValid]);
+
+  let accountContent;
+
+  if (!isTokenValid) {
+    accountContent = (
+      <div className={styles.toolTip}>
+        <div className={styles.links}>
+          <Link href="/auth/login">Login</Link>
+          <Link href="/auth/signup">Signup</Link>
+        </div>
+      </div>
+    );
+  } else {
+    accountContent = (
+      <div className={styles.toolTip}>
+        <div className={styles.links}>
+          <button onClick={logoutHandler}>Logout</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <nav className={styles.nav}>
@@ -63,7 +105,7 @@ const NavBelt = () => {
             {/* <Link href="/auth/login" className={styles["nav-right__signIn-main"]}> */}
             <div className={styles["nav-right__signIn"]}>
               <span className={styles["nav-right__signIn-text1"]}>
-                Hello, sign in
+                Hello, {userName ? userName : "Sign in"}
               </span>
               <span className={styles["nav-right__signIn-text2"]}>
                 Account & Lists
@@ -71,12 +113,7 @@ const NavBelt = () => {
             </div>
             <DrowDownIcon />
           </div>
-          <div className={styles.toolTip}>
-            <div className={styles.links}>
-              <Link href="/auth/login">Login</Link>
-              <Link href="/auth/signup">Signup</Link>
-            </div>
-          </div>
+          {accountContent}
           {/* </Link> */}
         </section>
 
@@ -87,9 +124,7 @@ const NavBelt = () => {
 
         <Link href="/cart" className={styles["nav-right__cart"]}>
           <div className={styles["nav-right__cart-detail"]}>
-            <span className={styles["nav-right__cart-detail-number"]}>
-              {0}
-            </span>
+            <span className={styles["nav-right__cart-detail-number"]}>{0}</span>
             <span className={styles["nav-right__cart-detail-icon"]}>
               <CartMain />
             </span>

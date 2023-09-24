@@ -76,6 +76,7 @@ const SignupOrLoginPage = (props) => {
         authSliceActions.setToken({
           token: responseData.token,
           userId: responseData.userId,
+          userName: responseData.userName,
         })
       );
 

@@ -77,13 +77,18 @@ const LoginForm = (props) => {
           ) : null}
         </div>
 
-        <button
-          className={styles.button}
-          type="submit"
-          disabled={isNotValid || props.isSending}
-        >
-          Submit
-        </button>
+        {!props.isSending && (
+          <button
+            className={styles.button}
+            type="submit"
+            disabled={isNotValid || props.isSending}
+          >
+            Submit
+          </button>
+        )}
+        {props.isSending && (
+          <h4>Loading...</h4>
+        )}
 
         <div className={styles.redirect}>
           <p>
