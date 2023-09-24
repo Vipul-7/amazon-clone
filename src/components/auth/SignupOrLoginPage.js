@@ -11,12 +11,13 @@ import { useDispatch } from "react-redux";
 const SignupOrLoginPage = (props) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const [isSendingData, setIsSendingData] = useState(false);
+  const [isSendingSignupData, setIsSendingSignupData] = useState(false);
+  const [isSendingLoginData, setIsSendingLoginData] = useState(false);
   const [signupError, setSignupError] = useState(null);
   const [loginError, setLoginError] = useState(null);
 
   const signupFormSubmitHandler = async (values) => {
-    setIsSendingData(true);
+    setIsSendingSignupData(true);
 
     const userData = {
       firstName: values.name,
@@ -44,11 +45,11 @@ const SignupOrLoginPage = (props) => {
       console.log(error);
     }
 
-    setIsSendingData(false);
+    setIsSendingSignupData(false);
   };
 
   const loginFormSubmitHandler = async (values) => {
-    setIsSendingData(true);
+    setIsSendingLoginData(true);
 
     const userData = {
       email: values.email,
@@ -85,7 +86,7 @@ const SignupOrLoginPage = (props) => {
       console.log(error);
     }
 
-    setIsSendingData(false);
+    setIsSendingLoginData(false);
   };
 
   return (
@@ -97,7 +98,7 @@ const SignupOrLoginPage = (props) => {
       {props.signup && (
         <SignupForm
           onSubmit={signupFormSubmitHandler}
-          isSending={isSendingData}
+          isSending={isSendingSignupData}
           errorMessage={signupError}
           onRedirect={() => router.replace("/auth/login")}
         />
@@ -106,7 +107,7 @@ const SignupOrLoginPage = (props) => {
       {props.login && (
         <LoginForm
           onSubmit={loginFormSubmitHandler}
-          isSending={isSendingData}
+          isSending={isSendingLoginData}
           errorMessage={loginError}
           onRedirect={() => router.replace("/auth/signup")}
         />

@@ -133,7 +133,7 @@ const SignupForm = (props) => {
           </p>
         </div>
 
-        {!isSending && (
+        {!props.isSending && (
           <button
             className={styles.button}
             type="submit"
@@ -142,7 +142,7 @@ const SignupForm = (props) => {
             Submit
           </button>
         )}
-        {isSending && <p>Loading...</p>}
+        {props.isSending && <p>Loading...</p>}
 
         <div className={styles.redirect}>
           <p>
