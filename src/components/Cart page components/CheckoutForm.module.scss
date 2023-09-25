@@ -52,6 +52,13 @@
   .errors {
     color: red;
   }
+
+  .submitError {
+    color: red;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+  }
 }
 
 .cart-loading {

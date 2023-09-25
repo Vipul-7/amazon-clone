@@ -3,14 +3,6 @@ import styles from "./CheckoutForm.module.scss";
 
 const validate = (values) => {
   const errors = {};
-  if (!values.name) {
-    errors.name = "Required";
-  }
-  if (!values.email) {
-    errors.email = "Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = "Invalid email address";
-  }
   if (!values.street) {
     errors.street = "Required";
   }
@@ -28,8 +20,6 @@ const validate = (values) => {
 const CheckoutForm = (props) => {
   const formik = useFormik({
     initialValues: {
-      name: "",
-      email: "",
       street: "",
       city: "",
       pincode: "",
@@ -42,30 +32,6 @@ const CheckoutForm = (props) => {
 
   return (
     <form onSubmit={formik.handleSubmit} className={styles.form}>
-      <label htmlFor="name">Name</label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.name}
-      />
-      {formik.touched.name && formik.errors.name ? (
-        <div className={styles.errors}>{formik.errors.name}</div>
-      ) : null}
-
-      <label htmlFor="email">Email Address</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-      />
-      {formik.touched.email && formik.errors.email ? (
-        <div className={styles.errors}>{formik.errors.email}</div>
-      ) : null}
-
       <label htmlFor="street">Street</label>
       <input
         id="street"
@@ -102,13 +68,13 @@ const CheckoutForm = (props) => {
         <div className={styles.errors}>{formik.errors.pincode}</div>
       ) : null}
 
-      <button
-        type="submit"
-        className={styles.button}
-        disabled={props.isSending}
-      >
-        Submit
-      </button>
+      {props.isError && <div className={styles.submitError}>{props.error}</div>}
+
+      {!props.isSending && (
+        <button type="submit" className={styles.button}>
+          Submit
+        </button>
+      )}
 
       {props.isSending && (
         <div className={styles["cart-loading"]}>

@@ -8,10 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import CheckoutForm from "./CheckoutForm";
 // import { cartSliceActions } from "@/store/cart-slice";
 import { modalsActions } from "@/store/modals-slice";
+import { useMutation } from "@tanstack/react-query";
+import { clearCart, createOrder, queryClient } from "@/util/http";
 
 const CheckoutDetail = (props) => {
   const [showCheckoutForm, setShowCheckoutForm] = useState(false);
-  const [isSendingData, setIsSendingData] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -19,39 +20,36 @@ const CheckoutDetail = (props) => {
     setShowCheckoutForm(true);
   };
 
-  const checkoutHandler = async (values) => {
-    setIsSendingData(true);
-    const data = {
-      ...values,
-      items: items,
-      totalQuantity: TotalItemsCount,
-      subTotal,
-    };
-
-    try {
-      const response = await fetch("/api/order", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
-      // const data = await response.json();
-
-      // dispatch(cartSliceActions.clearCart());
-    } catch (error) {
-      console.log(error);
-    }
-    setIsSendingData(false);
-
-    dispatch(modalsActions.orderPlaced());
-    setTimeout(() => {
+  const { mutate: clearCartMutate } = useMutation({
+    mutationFn: clearCart,
+    onSuccess: () => {
+      queryClient.invalidateQueries("cart");
       dispatch(modalsActions.orderPlaced());
-    }, 4000);
+      setTimeout(() => {
+        dispatch(modalsActions.orderPlaced());
+      }, 4000);
+    },
+  });
+
+  const { mutate, isError, isLoading, error } = useMutation({
+    mutationFn: createOrder,
+    onSuccess: () => {
+      clearCartMutate({
+        Token: localStorage.getItem("token"),
+      });
+    },
+  });
+
+  const checkoutHandler = (values) => {
+    mutate({
+      Token: localStorage.getItem("token"),
+      data: {
+        items: props.cartData.items,
+        totalQuantity: props.cartData.totalQuantity,
+        subTotal: props.cartData.subTotal,
+        address: values,
+      },
+    });
   };
 
   return (
@@ -72,7 +70,7 @@ const CheckoutDetail = (props) => {
       <section className={styles["second-division"]}>
         <div className={styles.subTotal}>
           <span className={styles["subTotal__text"]}>
-            Subtotal ({props.totalQuantity} items):
+            Subtotal ({props.cartData.totalQuantity} items):
           </span>
           <span className={styles["subTotal__amount"]}>
             <span
@@ -84,7 +82,7 @@ const CheckoutDetail = (props) => {
             >
               ₹
             </span>
-            {props.subTotal}
+            {props.cartData.subTotal}
           </span>
         </div>
         <div className={styles.gift}>
@@ -95,7 +93,12 @@ const CheckoutDetail = (props) => {
 
       {showCheckoutForm && (
         <section className={styles["checkout-form"]}>
-          <CheckoutForm onSubmit={checkoutHandler} isSending={isSendingData} />
+          <CheckoutForm
+            onSubmit={checkoutHandler}
+            isSending={isLoading}
+            isError={isError}
+            error={error}
+          />
         </section>
       )}
 

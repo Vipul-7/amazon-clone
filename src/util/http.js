@@ -83,3 +83,43 @@ export const updateItem = async ({ productId, Token, quantity }) => {
   const data = await response.json();
   return data;
 };
+
+export const clearCart = async ({ Token }) => {
+  const response = await fetch("/api/cart/clearCart", {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + Token,
+    },
+  });
+
+  if (!response.ok) {
+    const error = new Error("An error occurred while clearing cart!");
+    error.code = response.status;
+    error.info = await response.json();
+    throw error;
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+export const createOrder = async ({ data, Token }) => {
+  const response = await fetch("/api/order", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + Token,
+    },
+  });
+
+  if (!response.ok) {
+    const error = new Error("An error occurred while creating order!");
+    error.code = response.status;
+    error.info = await response.json();
+    throw error;
+  }
+
+  const responseData = await response.json();
+  return responseData;
+};

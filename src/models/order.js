@@ -28,17 +28,19 @@ const orderSchema = new Schema({
     type: Number,
     required: true,
   },
-  street: {
-    type: String,
-    required: true,
-  },
-  city: {
-    type: String,
-    required: true,
-  },
-  pincode: {
-    type: Number,
-    required: true,
+  address: {
+    street: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    pincode: {
+      type: Number,
+      required: true,
+    },
   },
 });
 

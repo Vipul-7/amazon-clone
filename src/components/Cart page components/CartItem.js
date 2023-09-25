@@ -34,7 +34,6 @@ const CartItem = (props) => {
       queryClient.invalidateQueries("cart");
     },
   });
-  console.log(updateData && updateData.updateQuantity);
 
   const deleteHandler = () => {
     deleteMutate({

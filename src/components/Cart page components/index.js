@@ -26,8 +26,7 @@ const CartPageComponents = () => {
       <div>
         {data?.totalQuantity > 0 && (
           <CheckoutDetail
-            totalQuantity={data?.totalQuantity}
-            subTotal={data?.subTotal}
+            cartData={data}
           />
         )}
       </div>
